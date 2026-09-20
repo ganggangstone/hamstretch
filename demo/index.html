@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>기지개햄 데모</title>
+    <link rel="stylesheet" href="app/theme.css" />
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <header>
+      <h1>기지개햄 <span>데모</span></h1>
+      <p id="note">맥 앱을 브라우저에서 그대로 돌립니다. 아래 화면 안에서 실제 앱 코드가 움직여요.</p>
+    </header>
+
+    <!-- 가짜 바탕화면. 이 안이 '사용자의 화면'이다. -->
+    <div class="desk" id="desk">
+      <div class="bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="spacer"></span>
+        <span id="trayFace">🐹</span>
+        <span class="clock" id="clock">10:24</span>
+      </div>
+      <div class="screen" id="screen">
+        <div class="win"><i></i><i></i><i></i><i></i></div>
+        <iframe id="pet" src="app/index.html" title="펫" scrolling="no"></iframe>
+        <iframe id="prompt" src="app/prompt.html" title="알림" scrolling="no" hidden></iframe>
+      </div>
+    </div>
+
+    <!-- 들어온 사람에게 한 번에 하나만 시킨다. 버튼 여러 개를 늘어놓으면
+         무엇부터 눌러야 할지 몰라 아무것도 안 누르고 나간다. -->
+    <div class="guide">
+      <p class="step"><b id="stepNo">1단계</b> <span id="stepText"></span></p>
+      <button id="go" type="button"></button>
+      <button id="reset" type="button" class="ghost">처음부터</button>
+      <div class="gear" id="gear" hidden></div>
+    </div>
+
+    <div class="sheet" id="sheet" hidden>
+      <div class="sheet-head">
+        <b>기록</b>
+        <button id="closeDash" type="button" class="x">닫기</button>
+      </div>
+      <iframe id="dash" src="app/dashboard.html" title="기록"></iframe>
+    </div>
+
+    <footer>
+      <a href="../">기지개햄 소개</a>
+      <a href="https://github.com/ganggangstone/hamstretch">GitHub</a>
+    </footer>
+
+    <script src="pack.js"></script>
+    <script src="bus.js"></script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+/* 디자인 토큰 — 색과 간격은 전부 여기서만 정의한다.
+   펫 창, 설정 창, 앞으로 만들 대시보드가 모두 이 파일을 가져다 쓴다.
+   테마를 바꾸고 싶으면 이 파일만 고치면 된다.
+
+   테마는 세 가지 상태를 가진다.
+   - 시스템 따름: html에 data-theme 없음 → prefers-color-scheme 이 결정
+   - 라이트 고정: html[data-theme="light"]
+   - 다크 고정:   html[data-theme="dark"]
+   그래서 기본값(:root)은 라이트로 두고, 다크는 두 군데에서 각각 덮어쓴다. */
+:root {
+  --ham-outline: #5b3a2e;
+  --ham-body: #d9a566;
+  --ham-cream: #f3ddb5;
+  --ham-pink: #ef9aa8;
+
+  --surface: #fffdf7;
+  --surface-2: #f6efe1;
+  --surface-border: #5b3a2e;
+  --text: #3b2f2a;
+  --text-dim: #7d6b60;
+  --accent: #c9772f;
+  /* 칸을 나누는 옅은 선. 테두리(--surface-border)는 너무 진해서 목록 구분에 쓰면 답답하다. */
+  --line: rgba(91, 58, 46, 0.16);
+  --shadow: rgba(60, 40, 30, 0.28);
+
+  --radius: 12px;
+  --gap: 10px;
+  --font: 13px/1.5 -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui,
+    sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --surface: #2f2724;
+    --surface-2: #241e1c;
+    --surface-border: #d9a566;
+    --text: #f3e7d6;
+    --text-dim: #b3a293;
+    --accent: #e0a45c;
+    --line: rgba(243, 231, 214, 0.18);
+    --shadow: rgba(0, 0, 0, 0.5);
+  }
+}
+
+:root[data-theme='dark'] {
+  --surface: #2f2724;
+  --surface-2: #241e1c;
+  --surface-border: #d9a566;
+  --text: #f3e7d6;
+  --text-dim: #b3a293;
+  --accent: #e0a45c;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
