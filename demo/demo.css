@@ -1,0 +1,112 @@
+/* 데모 페이지. 색은 앱과 같은 토큰(app/theme.css)을 쓴다. */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--text);
+  font: 400 16px/1.6 -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif;
+  word-break: keep-all;
+  padding: 32px 20px 60px;
+}
+
+header, .controls, .hint, footer, .desk, .sheet {
+  max-width: 900px; margin-left: auto; margin-right: auto;
+}
+
+header h1 { margin: 0 0 6px; font-size: 26px; }
+header h1 span {
+  font-size: 13px; vertical-align: middle;
+  background: var(--accent); color: #fff; border-radius: 999px; padding: 3px 10px;
+}
+header p { margin: 0 0 20px; color: var(--text-dim); font-size: 15px; }
+
+/* 가짜 바탕화면 */
+.desk { border-radius: 14px; overflow: hidden; border: 1px solid var(--surface-border); }
+.bar {
+  display: flex; align-items: center; gap: 7px;
+  background: var(--surface-2); padding: 8px 14px; font-size: 13px; color: var(--text-dim);
+}
+.bar .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.bar .spacer { flex: 1; }
+
+.screen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(140deg, #8d93d6, #b79ac8 55%, #e3aeb4);
+}
+
+/* 열려 있는 문서 창. 햄스터가 '작업을 가리지 않는다'를 보여주려면 가릴 것이 있어야 한다. */
+.win {
+  position: absolute; left: 5%; top: 9%; width: 46%; height: 62%;
+  background: rgba(40, 38, 70, 0.82); border-radius: 10px; padding: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.win i { display: block; height: 7px; border-radius: 4px; background: rgba(255, 255, 255, 0.22); }
+.win i:nth-child(2) { width: 72%; }
+.win i:nth-child(4) { width: 54%; }
+
+iframe { border: 0; background: transparent; }
+
+/* 펫 창. 대기 중에는 구석 240×240, 운동할 때만 화면 전체. */
+#pet {
+  position: absolute; right: 0; bottom: 0;
+  width: 240px; height: 240px;
+  pointer-events: none;
+}
+#pet.full { right: 0; bottom: 0; width: 100%; height: 100%; }
+
+#prompt {
+  position: absolute; right: 18px; bottom: 18px;
+  width: 320px; height: 170px;
+}
+
+/* 안내 상자. 화면 바로 아래에 붙여 "지금 할 일"이 하나만 보이게 한다. */
+.guide {
+  max-width: 900px; margin: 16px auto 28px;
+  background: var(--surface-2); border: 1px solid var(--surface-border);
+  border-radius: 14px; padding: 18px 20px;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.guide .step { margin: 0; flex: 1; min-width: 260px; font-size: 15px; }
+.guide .step b {
+  display: inline-block; margin-right: 8px;
+  background: var(--accent); color: #fff;
+  border-radius: 999px; padding: 2px 10px; font-size: 13px;
+}
+.guide button {
+  font: inherit; font-weight: 700; font-size: 15px; cursor: pointer;
+  background: var(--accent); color: #fff;
+  border: 1px solid var(--surface-border); border-radius: 12px; padding: 11px 22px;
+}
+.guide .ghost { background: transparent; color: var(--text-dim); font-weight: 400; border-color: var(--line); }
+
+/* 기록 화면. 앱에서는 별도 창이라 여기서는 아래에서 올라오는 판으로 보여준다. */
+.sheet { border: 1px solid var(--surface-border); border-radius: 14px; overflow: hidden; }
+.sheet-head {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--surface-2); padding: 10px 16px;
+}
+.sheet .x {
+  font: inherit; font-size: 14px; cursor: pointer; color: var(--text-dim);
+  background: transparent; border: 0;
+}
+#dash { width: 100%; height: 620px; display: block; background: var(--surface); }
+
+footer { margin-top: 36px; display: flex; gap: 16px; justify-content: center; font-size: 14px; }
+
+@media (max-width: 720px) {
+  #pet { width: 150px; height: 150px; }
+  #prompt { right: 8px; bottom: 8px; width: 260px; height: 150px; transform-origin: bottom right; }
+}
+
+/* 꾸미기 칩. 앱의 설정 창에 있는 소품 목록을 데모에서 바로 만지게 한 것이다. */
+.gear { flex-basis: 100%; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.gear button {
+  font: inherit; font-size: 14px; font-weight: 400; cursor: pointer;
+  background: transparent; color: var(--text-dim);
+  border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px;
+}
+.gear button.on { background: var(--ham-body); border-color: var(--ham-body); color: var(--ham-outline); font-weight: 700; }
+.gear .sep { width: 1px; height: 22px; background: var(--line); margin: 0 4px; }
+.gear .soon { color: var(--text-dim); font-size: 13px; }

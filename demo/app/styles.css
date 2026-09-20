@@ -1,0 +1,117 @@
+/* 색·간격 토큰은 theme.css에 있다. 이 파일은 펫 창의 배치만 다룬다. */
+
+/* 펫 창은 화면을 덮지만 완전히 투명하고 클릭이 통과한다.
+   배경색을 조금이라도 칠하면 그 영역이 가려지므로 절대 칠하지 않는다. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  pointer-events: none;
+  user-select: none;
+}
+
+#stage {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#bubble {
+  position: fixed;
+  left: 0;
+  top: 0;
+  max-width: 260px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+
+  background: var(--surface);
+  color: var(--text);
+  border: 2px solid var(--surface-border);
+  border-radius: var(--radius);
+  box-shadow: 0 3px 10px var(--shadow);
+  font: var(--font);
+  text-align: center;
+
+  /* 줄바꿈 규칙:
+     keep-all  — 한국어가 단어 중간에서 잘리지 않게 한다(어절 단위로만 끊김).
+     break-word — 그래도 한 줄에 안 들어가는 아주 긴 단어만 예외적으로 자른다.
+     이 둘을 같이 써야 "문장이 이상하게 끊기는" 문제가 안 생긴다. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  hyphens: none;
+
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+#bubble.on {
+  opacity: 1;
+}
+
+/* 말풍선 꼬리. 기본은 아래를 향하고, 햄스터가 화면 위쪽에 있어
+   말풍선이 아래로 내려갔을 때(.below)는 위를 향한다. */
+#bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -8px;
+  border: 6px solid transparent;
+  border-top-color: var(--surface-border);
+  border-bottom: 0;
+}
+
+#bubble.below::after {
+  bottom: auto;
+  top: -8px;
+  border: 6px solid transparent;
+  border-bottom-color: var(--surface-border);
+  border-top: 0;
+}
+
+/* 이동 모드에서만 보이는 안내판.
+   펫 창은 평소 클릭이 통과하므로(pointer-events: none) 여기서만 되살린다. */
+#mover {
+  position: fixed;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  pointer-events: auto;
+  cursor: grab;
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+  border: 2px dashed var(--surface-border);
+  border-radius: 16px;
+  font: var(--font);
+  color: var(--text);
+  text-align: center;
+}
+
+#mover.on {
+  display: flex;
+}
+
+#moverHint {
+  word-break: keep-all;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+#moverDone {
+  padding: 6px 14px;
+  border: 1px solid var(--surface-border);
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  font: var(--font);
+  font-weight: 600;
+  cursor: pointer;
+}

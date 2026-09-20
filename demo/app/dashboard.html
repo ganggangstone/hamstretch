@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <canvas id="face" width="96" height="96"></canvas>
+        <div>
+          <h1 id="title"></h1>
+          <p id="summary" class="dim"></p>
+        </div>
+      </header>
+
+      <section class="today">
+        <div class="stat">
+          <strong id="todayDone">0</strong>
+          <span id="todayDoneLabel" class="dim"></span>
+        </div>
+        <div class="stat">
+          <strong id="todaySnooze">0</strong>
+          <span id="todaySnoozeLabel" class="dim"></span>
+        </div>
+      </section>
+
+      <section>
+        <div class="goal-row">
+          <span id="weekLabel"></span>
+          <span id="weekCount" class="count"></span>
+        </div>
+        <div class="track"><div id="bar" class="fill"></div></div>
+        <p id="goalNote" class="dim"></p>
+        <p id="ignored" class="dim"></p>
+      </section>
+
+      <section>
+        <div id="chart" class="chart"></div>
+      </section>
+
+      <p id="empty" class="dim empty"></p>
+    </main>
+    <script src="../pack.js"></script>
+    <script src="../shim.js"></script>
+    <script type="module" src="dashboard.js"></script>
+  </body>
+</html>

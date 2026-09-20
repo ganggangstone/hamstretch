@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>기지개햄, 눈이 쉬어야 할 때 알려주는 맥 앱</title>
+    <meta name="description" content="20분마다 쉬라고 알려주는 맥 메뉴바 앱. 무시해도 되고, 대신 그 횟수를 기록합니다. 4MB, 무료, 인터넷을 쓰지 않습니다." />
+    <meta property="og:title" content="기지개햄, 눈이 쉬어야 할 때 알려주는 맥 앱" />
+    <meta property="og:description" content="잔소리하지 않고, 무시해도 되고, 대신 그 횟수를 기록합니다." />
+    <meta property="og:image" content="marketing/ko/card-01.png" />
+    <link rel="icon" href="src-tauri/icons/32x32.png" />
+    <link rel="stylesheet" href="src/theme.css" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <span class="brand"><canvas id="mark" width="44" height="44"></canvas> <b data-t="brand"></b></span>
+        <span class="navright">
+          <span class="langs">
+            <button type="button" data-lang="ko">한국어</button>
+            <button type="button" data-lang="en">English</button>
+          </span>
+          <a class="cta-sm" id="downloadTop" href="#install" data-t="ctaTop"></a>
+        </span>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <canvas id="hero" width="200" height="320"></canvas>
+        <h1 data-t="title"></h1>
+        <p class="lead" data-t="lead"></p>
+        <a class="cta" id="download" href="#install" data-t="cta"></a>
+        <p class="specs" data-t="specs"></p>
+        <p class="hint" data-t="ctaHint"></p>
+      </section>
+
+      <section class="shots"><div id="shots"></div></section>
+
+      <section id="install" class="install">
+        <h2 data-t="instTitle"></h2>
+        <ol>
+          <li data-t="inst1"></li>
+          <li data-t="inst2"></li>
+          <li data-t="inst3"></li>
+        </ol>
+        <!-- 경고 안내는 접어둔다. 받기도 전에 펼쳐 보이면 설치가 까다로워 보인다. -->
+        <details class="warn">
+          <summary data-t="warnTitle"></summary>
+          <p data-t="warnBody"></p>
+        </details>
+      </section>
+
+      <section class="faq">
+        <h2 data-t="faqTitle"></h2>
+        <div id="faq"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="foot-brand"><b data-t="brand"></b></p>
+      <p class="foot-note" data-t="footNote"></p>
+      <p class="foot-links"><a id="feedback" href="#" data-t="footFeedback"></a></p>
+      <p class="foot-copy">© <span id="year"></span> ganggangstone</p>
+    </footer>
+
+    <script type="module" src="site.js"></script>
+  </body>
+</html>

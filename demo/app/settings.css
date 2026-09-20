@@ -1,0 +1,145 @@
+/* 설정 창. 색과 간격은 theme.css의 토큰만 쓴다 — 여기서 색을 직접 쓰지 않는다. */
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--surface);
+  color: var(--text);
+  font: var(--font);
+}
+
+/* 항목이 늘어나면 창보다 길어질 수 있으므로 세로 스크롤을 허용한다. */
+body {
+  overflow-y: auto;
+}
+
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+}
+
+.row > span {
+  color: var(--text-dim);
+}
+
+select {
+  min-width: 170px;
+  padding: 6px 8px;
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: var(--font);
+}
+
+.note,
+.help {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 12px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.help {
+  margin-top: -8px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--surface-border);
+  opacity: 0.35;
+  margin: 4px 0;
+  width: 100%;
+}
+
+.feedback {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+h2 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+textarea,
+input[type='email'] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: var(--font);
+  resize: vertical;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+}
+
+.status {
+  color: var(--text-dim);
+  font-size: 12px;
+  word-break: keep-all;
+}
+
+button {
+  padding: 6px 14px;
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font: var(--font);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: var(--surface-2);
+  color: var(--text-dim);
+  cursor: default;
+}
+
+input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+}
+
+/* 파일을 창 위로 끌고 오면 받을 수 있다는 걸 보여준다. */
+body.dropping::after {
+  content: '';
+  position: fixed;
+  inset: 8px;
+  border: 3px dashed var(--accent);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+button.link {
+  background: none; border: 0; padding: 0;
+  color: var(--text-dim); font: var(--font); font-size: 13px;
+  text-decoration: underline; cursor: pointer;
+}

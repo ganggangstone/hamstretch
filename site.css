@@ -1,0 +1,104 @@
+/* 랜딩 페이지. 색은 src/theme.css의 토큰만 쓴다 — 앱과 같은 팔레트다.
+   테마는 보는 사람의 시스템 설정을 따른다. */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--text);
+  font: 400 17px/1.7 -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif;
+  word-break: keep-all;
+}
+
+canvas { image-rendering: pixelated; display: block; }
+a { color: var(--accent); }
+
+/* 스크롤해도 설치 버튼이 늘 보이게 붙여둔다. 배경을 칠하지 않으면 본문이 비쳐 보인다. */
+header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--surface);
+  border-bottom: 1px solid var(--surface-border);
+}
+nav {
+  max-width: 880px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-size: 18px; }
+.navright { display: flex; align-items: center; gap: 12px; }
+.langs { display: flex; gap: 6px; }
+
+.cta-sm {
+  background: var(--accent); color: #fff; text-decoration: none;
+  border: 1px solid var(--surface-border); border-radius: 999px;
+  padding: 6px 16px; font-size: 14px; font-weight: 700; white-space: nowrap;
+}
+.langs button {
+  border: 1px solid var(--surface-border); background: transparent; color: var(--text-dim);
+  border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 14px; cursor: pointer;
+}
+/* 선택된 언어. 진한 주황(--accent)은 설치 버튼과 세기가 같아 시선을 나눠 가진다.
+   햄스터 몸 색을 쓰면 팔레트 안에 있으면서 한 단계 물러난다. */
+.langs button.on { background: var(--ham-body); border-color: var(--ham-body); color: var(--ham-outline); }
+
+main { max-width: 880px; margin: 0 auto; padding: 0 24px 80px; }
+
+.hero { text-align: center; padding: 56px 0 40px; }
+.hero canvas { margin: 0 auto 28px; }
+h1 { margin: 0 0 14px; font-size: 42px; line-height: 1.3; letter-spacing: -0.02em; }
+.lead { margin: 0 auto; max-width: 30em; color: var(--text-dim); font-size: 19px; }
+
+.cta {
+  display: inline-block; margin: 30px 0 14px;
+  background: var(--accent); color: #fff; text-decoration: none;
+  border: 2px solid var(--surface-border); border-radius: 14px;
+  padding: 13px 34px; font-weight: 700; font-size: 18px;
+}
+/* 아직 받을 수 없으면 눌러도 되는 것처럼 보이면 안 된다 */
+.cta.soon { background: var(--surface-2); color: var(--text-dim); }
+.specs { margin: 0; color: var(--text-dim); font-size: 14px; }
+
+h2 { letter-spacing: -0.01em; }
+.install h2, .privacy h2 { font-size: 26px; margin: 0 0 14px; }
+#install { scroll-margin-top: 76px; }
+.install ol { margin: 0 0 24px; padding-left: 1.3em; color: var(--text-dim); }
+.install li { margin-bottom: 10px; }
+.install li b { color: var(--text); }
+
+.warn { border-top: 1px solid var(--line); padding: 12px 0; margin-bottom: 56px; }
+.warn summary { cursor: pointer; font-size: 16px; }
+.warn p { margin: 10px 0 2px; color: var(--text-dim); font-size: 15px; line-height: 1.7; }
+footer p { margin: 0; }
+
+@media (max-width: 720px) {
+  h1 { font-size: 32px; }
+  .hero { padding-top: 36px; }
+}
+
+/* 다운로드 버튼 아래 한 줄. 설치 마찰을 미리 알려주되 겁주지 않을 만큼만. */
+.hint { margin: 6px 0 0; color: var(--text-dim); font-size: 13px; }
+
+.shots { margin: 0 0 40px; }
+/* 카드를 가로로 3등분하면 글자가 작아져 읽히지 않는다. 세로로 쌓아 스크롤하며 본다. */
+.shots > div { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.shots img { width: 100%; border-radius: 12px; display: block; }
+
+.faq { margin: 0 0 56px; }
+.faq h2 { margin: 0 0 12px; font-size: 21px; }
+.faq details {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-size: 16px; }
+.faq p { margin: 10px 0 2px; color: var(--text-dim); font-size: 15px; line-height: 1.7; }
+
+/* 푸터는 main 바깥이라 가운데 정렬 컨테이너를 따로 줘야 한다. */
+footer {
+  border-top: 1px solid var(--line);
+  max-width: 880px; margin: 0 auto; padding: 28px 24px 48px;
+  text-align: center;
+}
+.foot-brand { margin: 0 0 8px; font-size: 15px; }
+.foot-note { margin: 0 0 8px; color: var(--text-dim); font-size: 15px; }
+.foot-links { margin: 0 0 8px; }
+.foot-copy { margin: 0; color: var(--text-dim); font-size: 13px; }

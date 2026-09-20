@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>hamster</title>
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="prompt.css" />
+  </head>
+  <body>
+    <div class="card">
+      <canvas id="face" width="72" height="72"></canvas>
+      <div class="body">
+        <p id="message"></p>
+        <div class="buttons">
+          <button id="primary" type="button"></button>
+          <button id="secondary" type="button" class="ghost"></button>
+        </div>
+      </div>
+    </div>
+    <script src="../pack.js"></script>
+    <script src="../shim.js"></script>
+    <script type="module" src="prompt.js"></script>
+  </body>
+</html>
