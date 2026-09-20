@@ -6,12 +6,30 @@
     <title>기지개햄 데모</title>
     <link rel="stylesheet" href="app/theme.css" />
     <link rel="stylesheet" href="demo.css" />
+    <!-- 앱은 브라우저 언어를 따라가고, 한국어가 아니면 영어로 떨어진다.
+         데모는 한국어로 고정한다. iframe이 뜨기 전에 정해야 하므로 head에 둔다.
+         ?lang=en 으로 영어도 볼 수 있다. -->
+    <script>
+      const demoLang = new URLSearchParams(location.search).get('lang');
+      localStorage.setItem('lang', demoLang === 'en' ? 'en' : 'ko');
+    </script>
   </head>
   <body>
     <header>
       <h1>기지개햄 <span>데모</span></h1>
-      <p id="note">맥 앱을 브라우저에서 그대로 돌립니다. 아래 화면 안에서 실제 앱 코드가 움직여요.</p>
+      <p class="what">20분마다 햄스터가 와서 같이 눈운동하고 기지개 켜는 맥 앱이에요.</p>
+      <p id="note">설치 없이 여기서 바로 해볼 수 있어요. 아래 화면 안에서 실제 앱 코드가 그대로 돌아갑니다.</p>
     </header>
+
+    <!-- 들어온 사람에게 한 번에 하나만 시킨다. 버튼 여러 개를 늘어놓으면
+         무엇부터 눌러야 할지 몰라 아무것도 안 누르고 나간다. -->
+    <div class="guide">
+      <p class="step"><b id="stepNo">1단계</b> <span id="stepText"></span></p>
+      <button id="go" type="button"></button>
+      <button id="reset" type="button" class="ghost">처음부터</button>
+      <span class="auto" id="autoTag">자동으로 보여주는 중 · 아무거나 누르면 직접 해볼 수 있어요</span>
+      <div class="gear" id="gear" hidden></div>
+    </div>
 
     <!-- 가짜 바탕화면. 이 안이 '사용자의 화면'이다. -->
     <div class="desk" id="desk">
@@ -28,15 +46,6 @@
       </div>
     </div>
 
-    <!-- 들어온 사람에게 한 번에 하나만 시킨다. 버튼 여러 개를 늘어놓으면
-         무엇부터 눌러야 할지 몰라 아무것도 안 누르고 나간다. -->
-    <div class="guide">
-      <p class="step"><b id="stepNo">1단계</b> <span id="stepText"></span></p>
-      <button id="go" type="button"></button>
-      <button id="reset" type="button" class="ghost">처음부터</button>
-      <div class="gear" id="gear" hidden></div>
-    </div>
-
     <div class="sheet" id="sheet" hidden>
       <div class="sheet-head">
         <b>기록</b>
@@ -47,7 +56,6 @@
 
     <footer>
       <a href="../">기지개햄 소개</a>
-      <a href="https://github.com/ganggangstone/hamstretch">GitHub</a>
     </footer>
 
     <script src="pack.js"></script>
