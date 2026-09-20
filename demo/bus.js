@@ -168,11 +168,13 @@ function buildGear() {
     }
   }
 
+  // 칩만 늘어놓으면 '안경'이 무엇을 하는 버튼인지 알 수 없다. 묶음마다 이름을 붙인다.
   box.innerHTML =
+    '<span class="label">옷 입히기</span>' +
     items.map(([id, label]) => `<button type="button" data-gear="${id}">${label}</button>`).join('') +
     '<span class="sep"></span>' +
-    bases.map(([id, label]) => `<button type="button" data-base="${id}">${label}</button>`).join('') +
-    '<span class="soon">겨울 세트는 준비 중</span>';
+    '<span class="label">발밑</span>' +
+    bases.map(([id, label]) => `<button type="button" data-base="${id}">${label}</button>`).join('');
 
   const paint = () => {
     const worn = wornList();
@@ -227,6 +229,8 @@ window.addEventListener('message', (e) => {
   if (data.event === 'stats-changed' && exercising) {
     exercising = false;
     step('done');
+    // 운동까지 봤으면 기록도 알아서 펼쳐 보여준다. 여기까지가 한 바퀴다.
+    if (auto) setTimeout(() => { if (auto) STEPS.done.run(); }, 1200);
   }
 });
 
@@ -240,7 +244,33 @@ document.getElementById('reset').addEventListener('click', () => {
   location.reload();
 });
 
+// --- 자동 시연 ----------------------------------------------------------
+// 단계마다 버튼을 눌러야 끝까지 가는 구조는 대부분 첫 버튼에서 멈춘다.
+// 그래서 들어오면 알아서 한 바퀴 돈다. 사람이 무엇이든 누르는 순간 멈추고
+// 그때부터는 직접 조작하게 둔다 — 자동과 수동이 겹치면 둘 다 이상해진다.
+let auto = true;
+const timers = [];
+
+function stopAuto() {
+  if (!auto) return;
+  auto = false;
+  timers.forEach(clearTimeout);
+  document.getElementById('autoTag').hidden = true;
+}
+
+function later(ms, fn) {
+  timers.push(setTimeout(() => auto && fn(), ms));
+}
+
+document.addEventListener('click', stopAuto);
+// iframe 안(알림 버튼)을 누른 것도 사람의 조작이다.
+window.addEventListener('blur', () => setTimeout(stopAuto, 0));
+
 step('start');
+
+later(1800, () => broadcast('debug-prompt'));
+// 알림이 뜬 뒤에도 가만히 있으면 대신 눌러준다. 운동하는 모습이 이 앱의 핵심이다.
+later(6500, () => broadcast('prompt-accept'));
 
 // 가짜 바탕화면의 시계. 멈춰 있으면 화면이 죽어 보인다.
 function clock() {

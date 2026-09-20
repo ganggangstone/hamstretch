@@ -19,7 +19,8 @@ header h1 span {
   font-size: 13px; vertical-align: middle;
   background: var(--accent); color: #fff; border-radius: 999px; padding: 3px 10px;
 }
-header p { margin: 0 0 20px; color: var(--text-dim); font-size: 15px; }
+header .what { margin: 0 0 6px; font-size: 19px; }
+header #note { margin: 0 0 20px; color: var(--text-dim); font-size: 14px; }
 
 /* 가짜 바탕화면 */
 .desk { border-radius: 14px; overflow: hidden; border: 1px solid var(--surface-border); }
@@ -63,7 +64,7 @@ iframe { border: 0; background: transparent; }
 
 /* 안내 상자. 화면 바로 아래에 붙여 "지금 할 일"이 하나만 보이게 한다. */
 .guide {
-  max-width: 900px; margin: 16px auto 28px;
+  max-width: 900px; margin: 0 auto 14px;
   background: var(--surface-2); border: 1px solid var(--surface-border);
   border-radius: 14px; padding: 18px 20px;
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
@@ -109,4 +110,7 @@ footer { margin-top: 36px; display: flex; gap: 16px; justify-content: center; fo
 }
 .gear button.on { background: var(--ham-body); border-color: var(--ham-body); color: var(--ham-outline); font-weight: 700; }
 .gear .sep { width: 1px; height: 22px; background: var(--line); margin: 0 4px; }
-.gear .soon { color: var(--text-dim); font-size: 13px; }
+.gear .label { color: var(--text-dim); font-size: 13px; margin-right: 2px; }
+
+/* 자동 시연 중임을 알린다. 안 보이면 "내가 안 눌렀는데 왜 움직이지"가 된다. */
+.auto { flex-basis: 100%; color: var(--text-dim); font-size: 13px; }
