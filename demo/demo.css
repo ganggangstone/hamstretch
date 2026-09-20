@@ -1,6 +1,9 @@
 /* 데모 페이지. 색은 앱과 같은 토큰(app/theme.css)을 쓴다. */
 * { box-sizing: border-box; }
 
+/* display를 지정한 요소는 hidden 속성만으로 안 사라진다. CSS가 더 세기 때문이다. */
+[hidden] { display: none !important; }
+
 body {
   margin: 0;
   background: var(--surface);
@@ -80,7 +83,7 @@ iframe { border: 0; background: transparent; }
   background: var(--accent); color: #fff;
   border: 1px solid var(--surface-border); border-radius: 12px; padding: 11px 22px;
 }
-.guide .ghost { background: transparent; color: var(--text-dim); font-weight: 400; border-color: var(--line); }
+.guide .ghost, .guide .back { background: transparent; color: var(--text-dim); font-weight: 400; border-color: var(--line); }
 
 /* 기록 화면. 앱에서는 별도 창이라 여기서는 아래에서 올라오는 판으로 보여준다. */
 .sheet { border: 1px solid var(--surface-border); border-radius: 14px; overflow: hidden; }
@@ -114,3 +117,59 @@ footer { margin-top: 36px; display: flex; gap: 16px; justify-content: center; fo
 
 /* 자동 시연 중임을 알린다. 안 보이면 "내가 안 눌렀는데 왜 움직이지"가 된다. */
 .auto { flex-basis: 100%; color: var(--text-dim); font-size: 13px; }
+
+/* 제출·스토어용 스크린샷 모드(?shot=). 화면만 16:9로 꽉 채운다. */
+body.shooting { padding: 0; height: 100vh; overflow: hidden; }
+body.shooting header,
+body.shooting .guide,
+body.shooting footer { display: none; }
+body.shooting .desk { max-width: none; height: 100vh; border: 0; border-radius: 0; display: flex; flex-direction: column; }
+body.shooting .screen { flex: 1; aspect-ratio: auto; }
+body.shooting .sheet { display: none; }
+
+/* 기록 창은 앱에서 420px짜리 패널이다. 1920으로 늘리면 레이아웃이 무너지므로
+   바탕화면 위에 창처럼 띄운 모습으로 찍는다. */
+body.shooting-sheet .sheet {
+  display: block; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 460px; max-width: none; height: 760px; z-index: 5;
+  box-shadow: 0 30px 80px var(--shadow);
+}
+body.shooting-sheet .sheet-head { display: none; }
+body.shooting-sheet #dash { height: 760px; }
+
+/* 시연 모드. 설명을 읽는 화면과 보는 화면을 나눈다 —
+   화면이 작으면 햄스터가 무엇을 하는지 안 보인다. */
+body.stage {
+  padding: 0; height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+body.stage header, body.stage footer { display: none; }
+body.stage .desk {
+  max-width: none; border: 0; border-radius: 0;
+  flex: 1; min-height: 0; display: flex; flex-direction: column;
+}
+body.stage .screen { flex: 1; aspect-ratio: auto; }
+
+/* 안내는 화면 아래에 따로 붙인다. 화면 위에 띄우면 오른쪽 아래 알림 카드를 가린다. */
+body.stage .guide {
+  margin: 0; max-width: none; border: 0; border-top: 1px solid var(--surface-border);
+  border-radius: 0; background: var(--surface); flex: none;
+}
+
+/* 기록 창은 바탕화면 위에 창처럼 띄운다. */
+body.stage .sheet {
+  position: fixed; left: 50%; top: 46%; transform: translate(-50%, -50%);
+  width: 460px; max-width: calc(100% - 32px); height: min(720px, 78vh); z-index: 15;
+  box-shadow: 0 30px 80px var(--shadow);
+}
+body.stage #dash { height: 100%; }
+
+/* 랜딩에 끼워 넣는 미리보기. 바탕화면만 남긴다. */
+body.embed { padding: 0; overflow: hidden; }
+body.embed header, body.embed footer, body.embed .guide, body.embed .sheet { display: none; }
+body.embed .desk { max-width: none; border: 0; border-radius: 0; }
+
+.guide .back {
+  text-decoration: none; border: 1px solid var(--line); border-radius: 12px;
+  padding: 11px 18px; color: var(--text-dim); font-size: 15px;
+}

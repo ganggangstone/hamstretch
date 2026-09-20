@@ -16,8 +16,19 @@ export function allAccessories() {
   return { glasses: ACCESSORIES.glasses, ...packAccessories() };
 }
 
+// 꾸러미에서 온 발밑 소품은 layer가 좌표 배열이다(JSON이라 함수를 담지 못한다).
+// 앱 안에 든 쳇바퀴는 각도를 받는 함수라 둘의 모양이 다르므로, 여기서 함수로 맞춰준다.
+// 그리는 쪽이 둘을 구분하게 두면 새 꾸러미가 들어올 때마다 같은 실수를 반복한다.
+function asFunction(item) {
+  if (typeof item?.layer === 'function') return item;
+  return { ...item, layer: () => item.layer ?? [] };
+}
+
 export function allBases() {
-  return { ...BASES, ...packBases() };
+  const fromPacks = Object.fromEntries(
+    Object.entries(packBases()).map(([id, item]) => [id, asFunction(item)]),
+  );
+  return { ...BASES, ...fromPacks };
 }
 
 export function gearLayers() {

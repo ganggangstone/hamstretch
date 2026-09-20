@@ -17,7 +17,10 @@ const T = {
     title: '햄스터 따라<br />눈운동하고 기지개 켜는 앱',
     lead: '온종일 모니터 앞에 앉아 있는 나를 위해 만든 거북목과 눈 피로 방지 앱.',
     cta: '무료로 받기',
-    ctaTop: '설치하기',
+    ctaTop: '데모 보기',
+    ctaDemo: '데모 해보기',
+    notOpen: '아직 공개 전이에요. 먼저 데모로 만나보세요.',
+    previewNote: '진짜 앱이에요. 위 버튼을 누르면 직접 만져볼 수 있어요.',
     ctaSoon: '곧 나와요',
     specs: '맥 전용 · 4MB · 인터넷 안 씀 · 무료',
     ctaHint: '처음 열 때만 우클릭 → 열기',
@@ -60,7 +63,10 @@ const T = {
     title: 'Follow the hamster,<br />rest your eyes and stretch',
     lead: 'Made for someone who sits in front of a monitor all day.',
     cta: 'Get it free',
-    ctaTop: 'Install',
+    ctaTop: 'Try the demo',
+    ctaDemo: 'Try the demo',
+    notOpen: 'Not out yet. Try the demo in the meantime.',
+    previewNote: 'This is the real app. Press the button above to play with it.',
     ctaSoon: 'Coming soon',
     specs: 'For Mac · 4MB · never goes online · free',
     ctaHint: 'First launch: right-click → Open',
@@ -142,20 +148,19 @@ function apply(lang) {
     el.innerHTML = t[el.dataset.t];
   }
 
+  // 받을 곳이 없으면 버튼을 잠근 채 두지 않고 아예 감춘다. 눌리지 않는 버튼은
+  // "뭔가 고장났나"로 읽힌다. 대신 안내 문구 한 줄을 띄운다.
   const download = document.getElementById('download');
-  if (DOWNLOAD) {
-    download.href = DOWNLOAD;
-    download.textContent = t.cta;
-    download.classList.remove('soon');
-  } else {
-    // 링크가 없으면 누를 수 있는 것처럼 보이면 안 된다.
-    download.href = '#install';
-    download.textContent = t.ctaSoon;
-    download.classList.add('soon');
-  }
+  download.hidden = !DOWNLOAD;
+  download.href = DOWNLOAD || '#install';
+  download.textContent = t.cta;
+  document.getElementById('notice').hidden = !!DOWNLOAD;
+  // 설치 요령은 받을 수 있게 됐을 때만 의미가 있다. 버튼과 같이 나오고 같이 사라진다.
+  document.querySelector('.hint').hidden = !DOWNLOAD;
 
-  // 헤더 버튼은 받는 곳이 정해지기 전에도 설치 안내로 데려다주면 되므로 늘 살아 있다.
-  document.getElementById('downloadTop').href = DOWNLOAD || '#install';
+  // 받을 곳이 없는 동안 헤더 버튼은 데모로 보낸다.
+  const top = document.getElementById('downloadTop');
+  top.href = DOWNLOAD || 'demo/?play=1';
 
   // FAQ는 목록이라 data-t로 못 넣는다. 접어두면 길이가 화면을 잡아먹지 않는다.
   document.getElementById('faq').innerHTML = t.faq
