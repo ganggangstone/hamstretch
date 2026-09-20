@@ -67,6 +67,14 @@
         return ask(cmd, args ?? {});
       },
     },
+    // 대시보드가 창 제목을 바꾼다. 브라우저 탭에는 의미가 없지만, 없으면
+    // 모듈 첫 줄의 구조 분해에서 바로 예외가 나서 화면이 통째로 비어버린다.
+    window: {
+      getCurrentWindow: () => ({
+        setTitle: () => Promise.resolve(),
+        close: () => Promise.resolve(),
+      }),
+    },
     event: {
       emit(event, payload) {
         toParent({ type: 'emit', event, payload });

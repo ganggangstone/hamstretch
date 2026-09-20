@@ -31,9 +31,19 @@
         <canvas id="hero" width="200" height="320"></canvas>
         <h1 data-t="title"></h1>
         <p class="lead" data-t="lead"></p>
-        <a class="cta" id="download" href="#install" data-t="cta"></a>
+        <p class="ctas">
+          <a class="cta" id="demo" href="demo/?play=1" data-t="ctaDemo"></a>
+          <a class="cta" id="download" href="#install" data-t="cta"></a>
+        </p>
         <p class="specs" data-t="specs"></p>
+        <p class="notice" id="notice" data-t="notOpen"></p>
         <p class="hint" data-t="ctaHint"></p>
+      </section>
+
+      <!-- 실제 앱이 도는 화면. 그림이 아니라 진짜 움직인다. -->
+      <section class="preview">
+        <iframe src="demo/?embed=1" title="기지개햄 미리보기" scrolling="no" loading="lazy"></iframe>
+        <p class="preview-note" data-t="previewNote"></p>
       </section>
 
       <section class="shots"><div id="shots"></div></section>

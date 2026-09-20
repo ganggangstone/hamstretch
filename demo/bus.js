@@ -64,6 +64,7 @@ function seed() {
   const day = 86400000;
   const now = Date.now();
   const plan = [
+    [0, ['done', 'done', 'snooze']],
     [6, ['done', 'done', 'snooze', 'done']],
     [5, ['done', 'done', 'done', 'ignored', 'done']],
     [4, ['snooze', 'done', 'done']],
@@ -74,7 +75,9 @@ function seed() {
   const lines = [];
   for (const [ago, kinds] of plan) {
     kinds.forEach((type, i) => {
-      lines.push(JSON.stringify({ t: now - ago * day + (10 + i) * 3600000, type }));
+      // 오늘 치는 '지금보다 조금 전'으로 둔다. 시각을 앞당기면 내일 것이 되어 사라진다.
+      const at = ago === 0 ? now - (i + 1) * 1800000 : now - ago * day + (10 + i) * 3600000;
+      lines.push(JSON.stringify({ t: at, type }));
     });
   }
   localStorage.setItem(KEY, lines.join('\n') + '\n');
@@ -248,7 +251,15 @@ document.getElementById('reset').addEventListener('click', () => {
 // 단계마다 버튼을 눌러야 끝까지 가는 구조는 대부분 첫 버튼에서 멈춘다.
 // 그래서 들어오면 알아서 한 바퀴 돈다. 사람이 무엇이든 누르는 순간 멈추고
 // 그때부터는 직접 조작하게 둔다 — 자동과 수동이 겹치면 둘 다 이상해진다.
-let auto = true;
+// 스토어·제출용 스크린샷을 찍을 때는 자동 시연을 끄고 원하는 장면에서 멈춰야 한다.
+// ?shot=... 으로 그 장면을 지정한다. 손으로 눌러가며 찍으면 매번 다른 그림이 나온다.
+const params = new URLSearchParams(location.search);
+const SHOT = params.get('shot');
+
+// 랜딩 위쪽에 끼워 넣는 미리보기. 설명도 버튼도 없이 바탕화면만 보여준다.
+if (params.get('embed')) document.body.classList.add('embed');
+
+let auto = false;
 const timers = [];
 
 function stopAuto() {
@@ -262,15 +273,37 @@ function later(ms, fn) {
   timers.push(setTimeout(() => auto && fn(), ms));
 }
 
-document.addEventListener('click', stopAuto);
 // iframe 안(알림 버튼)을 누른 것도 사람의 조작이다.
 window.addEventListener('blur', () => setTimeout(stopAuto, 0));
 
-step('start');
+// --- 시연 ---------------------------------------------------------------
+// 열면 바로 시작한다. 버튼을 한 번 누르게 하는 단계를 두면 거기서 멈추는 사람이 생기고,
+// 이 페이지는 "보여주는 것" 하나만 하면 된다.
+const sheet = document.getElementById('sheet');
 
-later(1800, () => broadcast('debug-prompt'));
-// 알림이 뜬 뒤에도 가만히 있으면 대신 눌러준다. 운동하는 모습이 이 앱의 핵심이다.
-later(6500, () => broadcast('prompt-accept'));
+function enterStage() {
+  document.body.classList.add('stage');
+  auto = true;
+  step('start');
+  later(1200, () => broadcast('debug-prompt'));
+  later(6000, () => broadcast('prompt-accept'));
+  document.getElementById('autoTag').hidden = false;
+
+  // 이 시점의 클릭까지 '사람이 조작했다'로 세면 시작하자마자 멈춘다. 다음 클릭부터 센다.
+  setTimeout(() => document.addEventListener('click', stopAuto), 0);
+}
+
+if (!SHOT && !params.get('embed')) enterStage();
+
+document.getElementById('closeDash').addEventListener('click', () => {
+  document.getElementById('sheet').hidden = true;
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  localStorage.removeItem(KEY);
+  localStorage.removeItem(SEED);
+  location.reload();
+});
 
 // 가짜 바탕화면의 시계. 멈춰 있으면 화면이 죽어 보인다.
 function clock() {

@@ -12,13 +12,16 @@
     <script>
       const demoLang = new URLSearchParams(location.search).get('lang');
       localStorage.setItem('lang', demoLang === 'en' ? 'en' : 'ko');
+      // 테마도 고정한다. 앱 기본값은 '시스템 따름'이라, 보는 사람이 다크 모드면
+      // 데모 페이지만 밝고 그 안의 창들은 까맣게 나와 따로 논다.
+      localStorage.setItem('theme', 'light');
     </script>
   </head>
   <body>
     <header>
       <h1>기지개햄 <span>데모</span></h1>
       <p class="what">20분마다 햄스터가 와서 같이 눈운동하고 기지개 켜는 맥 앱이에요.</p>
-      <p id="note">설치 없이 여기서 바로 해볼 수 있어요. 아래 화면 안에서 실제 앱 코드가 그대로 돌아갑니다.</p>
+      <p id="note">설치 없이 여기서 바로 해볼 수 있어요. 화면 안에서 실제 앱 코드가 그대로 돌아갑니다.</p>
     </header>
 
     <!-- 들어온 사람에게 한 번에 하나만 시킨다. 버튼 여러 개를 늘어놓으면
@@ -27,7 +30,8 @@
       <p class="step"><b id="stepNo">1단계</b> <span id="stepText"></span></p>
       <button id="go" type="button"></button>
       <button id="reset" type="button" class="ghost">처음부터</button>
-      <span class="auto" id="autoTag">자동으로 보여주는 중 · 아무거나 누르면 직접 해볼 수 있어요</span>
+      <a class="ghost back" href="../">기지개햄 소개</a>
+      <span class="auto" id="autoTag" hidden>자동으로 보여주는 중 · 아무거나 누르면 직접 해볼 수 있어요</span>
       <div class="gear" id="gear" hidden></div>
     </div>
 
