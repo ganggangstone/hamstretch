@@ -158,7 +158,11 @@ function drawHamster(canvas, { gear = ['glasses'], base = null }) {
   const scale = Math.floor(canvas.width / CELL);
   const drawn = CELL * scale;
   const x = Math.round((canvas.width - drawn) / 2);
-  const y = 0;
+  // 쳇바퀴(base)가 있으면 캐릭터를 위쪽에 붙이고 그 아래 공간에 쳇바퀴를 그린다
+  // (히어로 캔버스가 이 경우다). 쳇바퀴가 없으면 캐릭터만 있으니 캔버스 안에서
+  // 세로로 가운데 둔다 — 안 그러면 헤더처럼 옆에 텍스트가 있을 때 위로 붙어
+  // 보인다(캔버스 44px 중 실제 그림은 24px라 아래 20px가 빈 채로 남았었다).
+  const y = baseDef ? 0 : Math.round((canvas.height - drawn) / 2);
 
   const put = (col, row, key, s, ox, oy) => {
     const color = PAL[key];
