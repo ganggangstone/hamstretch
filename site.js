@@ -9,7 +9,10 @@ import { PAL, CELL, IDLE, ACCESSORIES, BASES } from './src/sprites.js';
 // 배포 주소가 정해지면 여기만 채우면 된다. 비어 있으면 그 링크는 화면에 안 나온다 —
 // 갈 곳 없는 링크를 눌러보게 두는 것보다 없는 편이 낫다.
 const REPO = 'https://github.com/ganggangstone/hamstretch';
-const DOWNLOAD = `${REPO}/releases/latest`;
+// OS별로 받는 파일이 다르다. releases/latest는 목록 페이지라 한 번 더 눌러야 하는데,
+// 자산 파일 이름을 직접 걸면 버튼을 누르자마자 다운로드가 시작된다.
+const DOWNLOAD_MAC = `${REPO}/releases/download/v0.1.0/hamster_0.1.0_aarch64.dmg`;
+const DOWNLOAD_WIN = `${REPO}/releases/download/v0.1.0/hamster_0.1.0_x64-setup.exe`;
 
 const T = {
   ko: {
@@ -22,27 +25,48 @@ const T = {
     notOpen: '아직 공개 전이에요. 먼저 데모로 만나보세요.',
     previewNote: '진짜 앱이에요. 위 버튼을 누르면 직접 만져볼 수 있어요.',
     ctaSoon: '곧 나와요',
-    specs: '맥 전용 · 4MB · 인터넷 안 씀 · 무료',
-    ctaHint: '처음 열 때만 우클릭 → 열기',
+    betaBadge: '베타',
+    betaNote: '',
 
     shot1: '평소에는 쳇바퀴',
     shot2: '때가 되면 알림',
     shot3: '쌓이는 기록',
 
-
     instTitle: '설치',
-    inst1: '앱을 <b>응용 프로그램</b>으로 옮겨요.',
-    inst2: '앱을 <b>우클릭 → 열기</b>.',
-    inst3: '메뉴바에 햄스터가 생기면 끝.',
-    warnTitle: '"확인되지 않은 개발자"라고 뜨나요?',
-    warnBody:
-      '고장이 아니에요. 애플 서명이 없어서 더블클릭은 맥이 막아요. 우클릭(또는 control+클릭) → 열기 → 한 번 더 열기. 새 버전마다 한 번씩 필요해요.',
+    // OS별로 달라지는 문구. specs·ctaHint·inst1~3·warnTitle·warnBody는
+    // apply()가 선택된 OS 것으로 덮어쓴다 — 위 키와 이름이 같아야 한다.
+    os: {
+      mac: {
+        specs: 'macOS(Apple Silicon) · 4MB · 인터넷 안 씀 · 무료',
+        ctaHint: '처음 열 때만 우클릭 → 열기',
+        download: DOWNLOAD_MAC,
+        inst1: '앱을 <b>응용 프로그램</b>으로 옮겨요.',
+        inst2: '앱을 <b>우클릭 → 열기</b>.',
+        inst3: '메뉴바에 햄스터가 생기면 끝.',
+        warnTitle: '"확인되지 않은 개발자"라고 뜨나요?',
+        warnBody:
+          '고장이 아니에요. 애플 서명이 없어서 더블클릭은 맥이 막아요. 우클릭(또는 control+클릭) → 열기 → 한 번 더 열기. 새 버전마다 한 번씩 필요해요.',
+      },
+      win: {
+        specs: 'Windows(베타) · 1.5MB · 인터넷 안 씀 · 무료',
+        ctaHint: '처음 열 때만 "추가 정보 → 실행"',
+        download: DOWNLOAD_WIN,
+        inst1: '내려받은 설치 파일을 <b>실행</b>해요.',
+        inst2: '"Windows에서 PC를 보호했습니다"가 뜨면 <b>추가 정보 → 실행</b>.',
+        inst3: '설치가 끝나면 트레이에 햄스터가 생기면 끝.',
+        warnTitle: '"Windows에서 PC를 보호했습니다"라고 뜨나요?',
+        warnBody:
+          '고장이 아니에요. 서명이 없어서 SmartScreen이 한 번 막아요. 추가 정보 → 그래도 실행을 누르면 됩니다. 새 버전마다 한 번씩 필요해요.',
+        beta: true,
+        betaNote: '윈도우판은 아직 베타예요. 실제 기기에서 막 검증을 시작했어요 — 이상한 점이 있으면 아래 "문의·피드백"으로 알려주세요.',
+      },
+    },
 
     faqTitle: '자주 묻는 질문',
     faq: [
       ['배터리를 많이 쓰나요?', '하루 종일 켜둬도 배터리가 눈에 띄게 줄지 않아요. 쉬는 동안에는 화면 구석만 그리고, 운동할 때만 화면 전체를 써요.'],
-      ['제 기록이 어디로 가나요?', '아무 데도 안 가요. 인터넷을 쓰지 않는 앱이라 언제 무엇을 했는지가 이 맥 안 파일 하나에만 쌓여요. 그 파일을 지우면 기록도 사라져요.'],
-      ['윈도우에서도 되나요?', '지금은 맥만 돼요. 윈도우는 준비하고 있어요.'],
+      ['제 기록이 어디로 가나요?', '아무 데도 안 가요. 인터넷을 쓰지 않는 앱이라 언제 무엇을 했는지가 이 컴퓨터 안 파일 하나에만 쌓여요. 그 파일을 지우면 기록도 사라져요.'],
+      ['윈도우에서도 되나요?', '베타로 돼요. 위에서 Windows를 고르면 받을 수 있어요. 아직 실기기 검증을 막 시작한 단계라 문제가 있을 수 있어요.'],
       ['소리가 나나요?', '안 나요. 화면 구석에 카드만 조용히 떠요.'],
       ['20분이 너무 잦아요.', '설정에서 10분, 20분, 30분, 45분, 60분 중에 고를 수 있어요.'],
       ['햄스터를 다른 자리에 두고 싶어요.', '메뉴바에서 "위치 옮기기"를 누르면 햄스터를 끌어서 옮길 수 있어요. 놓은 자리는 앱을 껐다 켜도 그대로예요.'],
@@ -68,27 +92,46 @@ const T = {
     notOpen: 'Not out yet. Try the demo in the meantime.',
     previewNote: 'This is the real app. Press the button above to play with it.',
     ctaSoon: 'Coming soon',
-    specs: 'For Mac · 4MB · never goes online · free',
-    ctaHint: 'First launch: right-click → Open',
+    betaBadge: 'Beta',
+    betaNote: '',
 
     shot1: 'It runs its wheel',
     shot2: 'A nudge when it is time',
     shot3: 'Breaks add up',
 
-
     instTitle: 'Install',
-    inst1: 'Drag the app into <b>Applications</b>.',
-    inst2: '<b>Right-click → Open</b> the app.',
-    inst3: 'A hamster appears in your menu bar.',
-    warnTitle: 'Does macOS say the developer cannot be verified?',
-    warnBody:
-      'Nothing is broken. The app is unsigned, so a plain double-click gets blocked. Right-click (or control-click) → Open → Open again. Once per new version.',
+    os: {
+      mac: {
+        specs: 'macOS (Apple Silicon) · 4MB · never goes online · free',
+        ctaHint: 'First launch: right-click → Open',
+        download: DOWNLOAD_MAC,
+        inst1: 'Drag the app into <b>Applications</b>.',
+        inst2: '<b>Right-click → Open</b> the app.',
+        inst3: 'A hamster appears in your menu bar.',
+        warnTitle: 'Does macOS say the developer cannot be verified?',
+        warnBody:
+          'Nothing is broken. The app is unsigned, so a plain double-click gets blocked. Right-click (or control-click) → Open → Open again. Once per new version.',
+      },
+      win: {
+        specs: 'Windows (beta) · 1.5MB · never goes online · free',
+        ctaHint: 'First launch: "More info" → Run anyway',
+        download: DOWNLOAD_WIN,
+        inst1: 'Run the downloaded installer.',
+        inst2: 'If "Windows protected your PC" appears, <b>More info → Run anyway</b>.',
+        inst3: 'A hamster appears in your system tray once it is done.',
+        warnTitle: 'Does it say "Windows protected your PC"?',
+        warnBody:
+          'Nothing is broken. The app is unsigned, so SmartScreen blocks it once. Click More info → Run anyway. Once per new version.',
+        beta: true,
+        betaNote: 'The Windows build is still in beta — real-device testing just started. If something looks off, use "Contact" below.',
+      },
+    },
 
     faqTitle: 'Questions people ask',
     faq: [
       ['Does it drain my battery?', 'Leave it on all day and you will not notice. It only draws a corner of the screen while idle, and uses the full screen during the 40 seconds.'],
-      ['Where does my data go?', 'Nowhere. The app never goes online, so what you did and when is appended to a single file on your Mac. Delete that file and the history is gone.'],
-      ['Is there a Windows version?', 'Not yet. Mac only for now, but Windows is in the works.'],
+      ['Where does my data go?', 'Nowhere. The app never goes online, so what you did and when is appended to a single file on your computer. Delete that file and the history is gone.'],
+      ['Is there a Windows version?', 'Yes, in beta. Pick Windows above to get it. Real-device testing just started, so there may be rough edges.'],
       ['Does it make a sound?', 'No. A small card just appears in the corner.'],
       ['Every 20 minutes is too often.', 'You can pick 10, 20, 30, 45 or 60 minutes in settings.'],
       ['Can I move the hamster?', 'Choose "Move the hamster" from the menu bar and drag it anywhere. It stays there after a restart.'],
@@ -139,8 +182,17 @@ function drawHamster(canvas, { gear = ['glasses'], base = null }) {
   }
 }
 
-function apply(lang) {
-  const t = T[lang];
+// 지금 고른 언어·OS. 버튼 하나만 눌러도(언어든 OS든) 둘 다 반영해서 다시 그려야
+// 하므로 모듈 전역에 둔다.
+let currentLang = 'ko';
+let currentOS = 'mac';
+
+function apply(lang, os) {
+  currentLang = lang;
+  currentOS = os;
+  // 언어 기본값 위에 OS별 값을 덮어쓴다 — specs·ctaHint·inst1~3·warnTitle·warnBody·
+  // download·betaNote는 os 쪽 값이 이긴다. 같은 이름을 안 쓰면 그냥 무시된다.
+  const t = { ...T[lang], ...T[lang].os[os] };
   document.documentElement.lang = lang;
   document.title = `${t.brand}, ${t.title.replace(/<br \/>/g, ' ')}`;
 
@@ -151,16 +203,20 @@ function apply(lang) {
   // 받을 곳이 없으면 버튼을 잠근 채 두지 않고 아예 감춘다. 눌리지 않는 버튼은
   // "뭔가 고장났나"로 읽힌다. 대신 안내 문구 한 줄을 띄운다.
   const download = document.getElementById('download');
-  download.hidden = !DOWNLOAD;
-  download.href = DOWNLOAD || '#install';
+  download.hidden = !t.download;
+  download.href = t.download || '#install';
   download.textContent = t.cta;
-  document.getElementById('notice').hidden = !!DOWNLOAD;
+  document.getElementById('notice').hidden = !!t.download;
   // 설치 요령은 받을 수 있게 됐을 때만 의미가 있다. 버튼과 같이 나오고 같이 사라진다.
-  document.querySelector('.hint').hidden = !DOWNLOAD;
+  document.querySelector('.hint').hidden = !t.download;
+
+  // 베타 안내는 윈도우를 골랐을 때만 보인다.
+  const betaNote = document.getElementById('betaNote');
+  betaNote.hidden = !t.beta;
 
   // 받을 곳이 없는 동안 헤더 버튼은 데모로 보낸다.
   const top = document.getElementById('downloadTop');
-  top.href = DOWNLOAD || 'demo/?play=1';
+  top.href = t.download || 'demo/?play=1';
 
   // FAQ는 목록이라 data-t로 못 넣는다. 접어두면 길이가 화면을 잡아먹지 않는다.
   document.getElementById('faq').innerHTML = t.faq
@@ -189,18 +245,35 @@ function apply(lang) {
   for (const button of document.querySelectorAll('[data-lang]')) {
     button.classList.toggle('on', button.dataset.lang === lang);
   }
+  for (const button of document.querySelectorAll('[data-os]')) {
+    button.classList.toggle('on', button.dataset.os === os);
+  }
   localStorage.setItem('siteLang', lang);
+  localStorage.setItem('siteOS', os);
 }
 
 drawHamster(document.getElementById('mark'), { gear: ['glasses'] });
 drawHamster(document.getElementById('hero'), { gear: ['glasses'], base: 'wheel' });
 
 for (const button of document.querySelectorAll('[data-lang]')) {
-  button.addEventListener('click', () => apply(button.dataset.lang));
+  button.addEventListener('click', () => apply(button.dataset.lang, currentOS));
+}
+for (const button of document.querySelectorAll('[data-os]')) {
+  button.addEventListener('click', () => apply(currentLang, button.dataset.os));
 }
 
-// ?lang=ko 로 강제할 수 있다. 특정 언어 페이지를 링크로 공유할 때 쓴다.
-const forced = new URLSearchParams(location.search).get('lang');
-const saved = localStorage.getItem('siteLang');
-const auto = (navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en';
-apply(T[forced] ? forced : T[saved] ? saved : auto);
+// ?lang=ko, ?os=win 으로 강제할 수 있다. 링크 하나로 "이 언어, 이 OS로 봐줘"가
+// 된다 — 윈도우판을 친구에게 테스트해달라고 부탁할 때 ?os=win을 붙여서 보내면 된다.
+function detectOS() {
+  return /Win/i.test(navigator.userAgent || '') ? 'win' : 'mac';
+}
+
+const forcedLang = new URLSearchParams(location.search).get('lang');
+const forcedOS = new URLSearchParams(location.search).get('os');
+const savedLang = localStorage.getItem('siteLang');
+const savedOS = localStorage.getItem('siteOS');
+const autoLang = (navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en';
+
+const lang = T[forcedLang] ? forcedLang : T[savedLang] ? savedLang : autoLang;
+const os = ['mac', 'win'].includes(forcedOS) ? forcedOS : ['mac', 'win'].includes(savedOS) ? savedOS : detectOS();
+apply(lang, os);

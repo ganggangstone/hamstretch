@@ -50,6 +50,20 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 80px; }
 h1 { margin: 0 0 14px; font-size: 42px; line-height: 1.3; letter-spacing: -0.02em; }
 .lead { margin: 0 auto; max-width: 30em; color: var(--text-dim); font-size: 19px; }
 
+/* macOS/Windows 고르는 버튼. 언어 버튼(.langs)과 같은 생김새를 쓴다 —
+   둘 다 "지금 보는 걸 바꾸는 토글"이라는 같은 역할이라서다. */
+.oses { display: flex; gap: 6px; justify-content: center; margin: 22px 0 0; }
+.oses button {
+  border: 1px solid var(--surface-border); background: transparent; color: var(--text-dim);
+  border-radius: 999px; padding: 6px 16px; font: inherit; font-size: 14px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.oses button.on { background: var(--ham-body); border-color: var(--ham-body); color: var(--ham-outline); }
+.beta-badge {
+  background: var(--accent); color: #fff; border-radius: 999px;
+  padding: 1px 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.02em;
+}
+
 .cta {
   display: inline-block; margin: 30px 0 14px;
   background: var(--accent); color: #fff; text-decoration: none;
@@ -59,6 +73,8 @@ h1 { margin: 0 0 14px; font-size: 42px; line-height: 1.3; letter-spacing: -0.02e
 /* 아직 받을 수 없으면 눌러도 되는 것처럼 보이면 안 된다 */
 .cta.soon { background: var(--surface-2); color: var(--text-dim); }
 .specs { margin: 0; color: var(--text-dim); font-size: 14px; }
+/* 윈도우를 골랐을 때만 뜨는 베타 안내. .notice보다 눈에 덜 띄게 — 경고가 아니라 참고니까. */
+.beta-note { margin: 10px 0 0; color: var(--text-dim); font-size: 13px; }
 
 .ctas { display: flex; gap: 10px; justify-content: center; margin: 30px 0 14px; flex-wrap: wrap; }
 .ctas .cta { margin: 0; }
