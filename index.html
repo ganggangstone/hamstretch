@@ -42,13 +42,13 @@
   <body>
     <header>
       <nav>
-        <span class="brand"><canvas id="mark" width="44" height="44"></canvas> <b data-t="brand"></b></span>
+        <span class="brand"><canvas id="mark" width="44" height="44"></canvas> <b data-t="brand">기지개햄</b></span>
         <span class="navright">
           <span class="langs">
             <button type="button" data-lang="ko">한국어</button>
             <button type="button" data-lang="en">English</button>
           </span>
-          <a class="cta-sm" id="downloadTop" href="#install" data-t="ctaTop"></a>
+          <a class="cta-sm" id="downloadTop" href="#install" data-t="ctaTop">데모 보기</a>
         </span>
       </nav>
     </header>
@@ -56,54 +56,54 @@
     <main>
       <section class="hero">
         <canvas id="hero" width="200" height="320"></canvas>
-        <h1 data-t="title"></h1>
-        <p class="lead" data-t="lead"></p>
+        <h1 data-t="title">햄스터 따라<br />눈운동하고 기지개 켜는 앱</h1>
+        <p class="lead" data-t="lead">온종일 모니터 앞에 앉아 있는 나를 위해 만든 거북목과 눈 피로 방지 앱.</p>
         <span class="oses">
           <button type="button" data-os="mac">macOS</button>
-          <button type="button" data-os="win">Windows <span class="beta-badge" data-t="betaBadge"></span></button>
+          <button type="button" data-os="win">Windows <span class="beta-badge" data-t="betaBadge">베타</span></button>
         </span>
         <p class="ctas">
-          <a class="cta" id="demo" href="demo/?play=1" data-t="ctaDemo"></a>
-          <a class="cta" id="download" href="#install" data-t="cta"></a>
+          <a class="cta" id="demo" href="demo/?play=1" data-t="ctaDemo">데모 해보기</a>
+          <a class="cta" id="download" href="https://github.com/ganggangstone/hamstretch/releases/download/v0.1.0/hamster_0.1.0_universal.dmg" data-t="cta">무료로 받기</a>
         </p>
-        <p class="specs" data-t="specs"></p>
-        <p class="notice" id="notice" data-t="notOpen"></p>
-        <p class="hint" data-t="ctaHint"></p>
-        <p class="beta-note" id="betaNote" data-t="betaNote"></p>
+        <p class="specs" data-t="specs">macOS(인텔·Apple Silicon 모두) · 3.9MB · 인터넷 안 씀 · 무료</p>
+        <p class="notice" id="notice" data-t="notOpen" hidden>아직 공개 전이에요. 먼저 데모로 만나보세요.</p>
+        <p class="hint" data-t="ctaHint">처음 열 때만 우클릭 → 열기</p>
+        <p class="beta-note" id="betaNote" data-t="betaNote" hidden></p>
       </section>
 
       <!-- 실제 앱이 도는 화면. 그림이 아니라 진짜 움직인다. -->
       <section class="preview">
         <iframe src="demo/?embed=1" title="기지개햄 미리보기" scrolling="no" loading="lazy"></iframe>
-        <p class="preview-note" data-t="previewNote"></p>
+        <p class="preview-note" data-t="previewNote">진짜 앱이에요. 위 버튼을 누르면 직접 만져볼 수 있어요.</p>
       </section>
 
       <section class="shots"><div id="shots"></div></section>
 
       <section id="install" class="install">
-        <h2 data-t="instTitle"></h2>
+        <h2 data-t="instTitle">설치</h2>
         <ol>
-          <li data-t="inst1"></li>
-          <li data-t="inst2"></li>
-          <li data-t="inst3"></li>
+          <li data-t="inst1">앱을 <b>응용 프로그램</b>으로 옮겨요.</li>
+          <li data-t="inst2">앱을 <b>우클릭 → 열기</b>.</li>
+          <li data-t="inst3">메뉴바에 햄스터가 생기면 끝.</li>
         </ol>
         <!-- 경고 안내는 접어둔다. 받기도 전에 펼쳐 보이면 설치가 까다로워 보인다. -->
         <details class="warn">
-          <summary data-t="warnTitle"></summary>
-          <p data-t="warnBody"></p>
+          <summary data-t="warnTitle">"확인되지 않은 개발자"라고 뜨나요?</summary>
+          <p data-t="warnBody">고장이 아니에요. 애플 서명이 없어서 더블클릭은 맥이 막아요. 우클릭(또는 control+클릭) → 열기 → 한 번 더 열기. 새 버전마다 한 번씩 필요해요.</p>
         </details>
       </section>
 
       <section class="faq">
-        <h2 data-t="faqTitle"></h2>
+        <h2 data-t="faqTitle">자주 묻는 질문</h2>
         <div id="faq"></div>
       </section>
     </main>
 
     <footer>
-      <p class="foot-brand"><b data-t="brand"></b></p>
-      <p class="foot-note" data-t="footNote"></p>
-      <p class="foot-links"><a id="feedback" href="#" data-t="footFeedback"></a></p>
+      <p class="foot-brand"><b data-t="brand">기지개햄</b></p>
+      <p class="foot-note" data-t="footNote">눈이 쉬어야 할 때 알려주는 맥 앱</p>
+      <p class="foot-links"><a id="feedback" href="#" data-t="footFeedback">문의·피드백</a></p>
       <p class="foot-copy">© <span id="year"></span> ganggangstone</p>
     </footer>
 
