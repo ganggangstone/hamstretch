@@ -34,7 +34,7 @@
         "image": "https://ganggangstone.github.io/hamstretch/screenshots/ko/card-01.png",
         "description": "20분마다 쉬라고 알려주는 맥 메뉴바 앱. 무시해도 되고, 대신 그 횟수를 기록합니다.",
         "applicationCategory": "HealthApplication",
-        "operatingSystem": "macOS",
+        "operatingSystem": "macOS, Windows",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       }
     </script>
@@ -58,6 +58,10 @@
         <canvas id="hero" width="200" height="320"></canvas>
         <h1 data-t="title"></h1>
         <p class="lead" data-t="lead"></p>
+        <span class="oses">
+          <button type="button" data-os="mac">macOS</button>
+          <button type="button" data-os="win">Windows <span class="beta-badge" data-t="betaBadge"></span></button>
+        </span>
         <p class="ctas">
           <a class="cta" id="demo" href="demo/?play=1" data-t="ctaDemo"></a>
           <a class="cta" id="download" href="#install" data-t="cta"></a>
@@ -65,6 +69,7 @@
         <p class="specs" data-t="specs"></p>
         <p class="notice" id="notice" data-t="notOpen"></p>
         <p class="hint" data-t="ctaHint"></p>
+        <p class="beta-note" id="betaNote" data-t="betaNote"></p>
       </section>
 
       <!-- 실제 앱이 도는 화면. 그림이 아니라 진짜 움직인다. -->
