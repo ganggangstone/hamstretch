@@ -182,7 +182,7 @@ function apply(lang) {
   document.getElementById('shots').innerHTML = shots
     .map(
       ([file, caption]) =>
-        `<img src="marketing/${lang}/${file}.png" alt="${caption}" />`,
+        `<img src="screenshots/${lang}/${file}.png" alt="${caption}" />`,
     )
     .join('');
 
