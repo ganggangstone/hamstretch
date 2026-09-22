@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="marketing/ko/card-01.png" width="320" alt="쳇바퀴 위의 픽셀 햄스터" />
+<img src="screenshots/ko/card-01.png" width="320" alt="쳇바퀴 위의 픽셀 햄스터" />
 
 # 햄스터
 
@@ -31,8 +31,8 @@
 | 10초 | 창밖이나 먼 곳을 봅니다. 화면 안에서 눈을 굴려봐야 초점 거리는 그대로입니다 |
 | 10초 | 같이 기지개를 켭니다 |
 
-<img src="marketing/ko/card-05.png" width="420" alt="화면 구석에 뜨는 알림 카드" />
-<img src="marketing/ko/card-07.png" width="420" alt="기록 화면" />
+<img src="screenshots/ko/card-05.png" width="420" alt="화면 구석에 뜨는 알림 카드" />
+<img src="screenshots/ko/card-07.png" width="420" alt="기록 화면" />
 
 ## 설치
 
