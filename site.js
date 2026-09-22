@@ -8,8 +8,8 @@ import { PAL, CELL, IDLE, ACCESSORIES, BASES } from './src/sprites.js';
 
 // 배포 주소가 정해지면 여기만 채우면 된다. 비어 있으면 그 링크는 화면에 안 나온다 —
 // 갈 곳 없는 링크를 눌러보게 두는 것보다 없는 편이 낫다.
-const REPO = '';
-const DOWNLOAD = ''; // 예: `${REPO}/releases/latest`
+const REPO = 'https://github.com/ganggangstone/hamstretch';
+const DOWNLOAD = `${REPO}/releases/latest`;
 
 const T = {
   ko: {
