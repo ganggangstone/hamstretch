@@ -11,7 +11,7 @@ import { PAL, CELL, IDLE, ACCESSORIES, BASES } from './src/sprites.js';
 const REPO = 'https://github.com/ganggangstone/hamstretch';
 // OS별로 받는 파일이 다르다. releases/latest는 목록 페이지라 한 번 더 눌러야 하는데,
 // 자산 파일 이름을 직접 걸면 버튼을 누르자마자 다운로드가 시작된다.
-const DOWNLOAD_MAC = `${REPO}/releases/download/v0.1.0/hamster_0.1.0_aarch64.dmg`;
+const DOWNLOAD_MAC = `${REPO}/releases/download/v0.1.0/hamster_0.1.0_universal.dmg`;
 const DOWNLOAD_WIN = `${REPO}/releases/download/v0.1.0/hamster_0.1.0_x64-setup.exe`;
 
 const T = {
@@ -37,7 +37,7 @@ const T = {
     // apply()가 선택된 OS 것으로 덮어쓴다 — 위 키와 이름이 같아야 한다.
     os: {
       mac: {
-        specs: 'macOS(Apple Silicon) · 4MB · 인터넷 안 씀 · 무료',
+        specs: 'macOS(인텔·Apple Silicon 모두) · 3.9MB · 인터넷 안 씀 · 무료',
         ctaHint: '처음 열 때만 우클릭 → 열기',
         download: DOWNLOAD_MAC,
         inst1: '앱을 <b>응용 프로그램</b>으로 옮겨요.',
@@ -102,7 +102,7 @@ const T = {
     instTitle: 'Install',
     os: {
       mac: {
-        specs: 'macOS (Apple Silicon) · 4MB · never goes online · free',
+        specs: 'macOS (Intel & Apple Silicon) · 3.9MB · never goes online · free',
         ctaHint: 'First launch: right-click → Open',
         download: DOWNLOAD_MAC,
         inst1: 'Drag the app into <b>Applications</b>.',
