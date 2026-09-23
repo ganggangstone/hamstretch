@@ -99,9 +99,40 @@ iframe { border: 0; background: transparent; }
 
 footer { margin-top: 36px; display: flex; gap: 16px; justify-content: center; font-size: 14px; }
 
+/* 좁은 화면. 폭이 아니라 화면에 들어오는지를 기준으로 줄인다 —
+   알림 카드와 안내 버튼은 잘리면 데모가 아니라 고장으로 보인다. */
 @media (max-width: 720px) {
+  body { padding: 20px 14px 40px; }
+  header h1 { font-size: 21px; }
+  header .what { font-size: 16px; }
+
   #pet { width: 150px; height: 150px; }
-  #prompt { right: 8px; bottom: 8px; width: 260px; height: 150px; transform-origin: bottom right; }
+  #prompt {
+    right: 8px; bottom: 8px;
+    width: min(260px, calc(100% - 16px)); height: 150px;
+    transform-origin: bottom right;
+  }
+
+  /* 안내 줄은 세로로 쌓는다. 한 줄에 버튼 세 개를 우겨넣으면 화면 밖으로 밀린다. */
+  .guide { padding: 14px; gap: 10px; }
+  .guide .step { min-width: 0; flex: 0 0 100%; font-size: 14px; }
+  .guide button, .guide .back {
+    flex: 1 1 auto; text-align: center; font-size: 14px; padding: 12px 14px;
+  }
+  /* 손가락으로 누를 것이라 칩도 44px 근처까지 키운다. */
+  .gear button { padding: 10px 14px; }
+
+  .sheet { border-radius: 12px; }
+  #dash { height: min(620px, 70vh); }
+}
+
+@media (max-width: 420px) {
+  header h1 { font-size: 19px; }
+  #pet { width: 120px; height: 120px; }
+  /* 알림 카드가 화면 폭을 다 쓰게 둔다. 줄여 접으면 버튼이 카드 밖으로 나간다. */
+  #prompt { left: 8px; right: 8px; width: auto; }
+  /* 가려질 '작업 창' 소품은 이 폭에서는 자리만 차지한다. */
+  .win { width: 60%; }
 }
 
 /* 꾸미기 칩. 앱의 설정 창에 있는 소품 목록을 데모에서 바로 만지게 한 것이다. */
@@ -140,12 +171,15 @@ body.shooting-sheet #dash { height: 760px; }
 /* 시연 모드. 설명을 읽는 화면과 보는 화면을 나눈다 —
    화면이 작으면 햄스터가 무엇을 하는지 안 보인다. */
 body.stage {
-  padding: 0; height: 100vh; overflow: hidden;
+  padding: 0; height: 100vh; height: 100dvh; overflow: hidden;
   display: flex; flex-direction: column;
 }
 body.stage header, body.stage footer { display: none; }
+/* margin-left/right:auto(위쪽 공통 규칙)가 남아 있으면 flex 아이템이 늘어나지 않아
+   바탕화면이 내용 너비만큼의 세로 띠로 쪼그라든다. */
 body.stage .desk {
-  max-width: none; border: 0; border-radius: 0;
+  max-width: none; margin: 0; width: 100%;
+  border: 0; border-radius: 0;
   flex: 1; min-height: 0; display: flex; flex-direction: column;
 }
 body.stage .screen { flex: 1; aspect-ratio: auto; }
