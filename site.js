@@ -37,7 +37,7 @@ const T = {
     // apply()가 선택된 OS 것으로 덮어쓴다 — 위 키와 이름이 같아야 한다.
     os: {
       mac: {
-        specs: 'macOS(인텔·Apple Silicon 모두) · 3.9MB · 인터넷 안 씀 · 무료',
+        specs: 'macOS(인텔·Apple Silicon 모두) · 3.9MB · 업데이트 확인 외엔 인터넷 안 씀 · 무료',
         ctaHint: '처음 열 때만 우클릭 → 열기',
         download: DOWNLOAD_MAC,
         inst1: '앱을 <b>응용 프로그램</b>으로 옮겨요.',
@@ -48,7 +48,7 @@ const T = {
           '고장이 아니에요. 애플 서명이 없어서 더블클릭은 맥이 막아요. 우클릭(또는 control+클릭) → 열기 → 한 번 더 열기. 새 버전마다 한 번씩 필요해요.',
       },
       win: {
-        specs: 'Windows(베타) · 1.5MB · 인터넷 안 씀 · 무료',
+        specs: 'Windows(베타) · 1.5MB · 업데이트 확인 외엔 인터넷 안 씀 · 무료',
         ctaHint: '처음 열 때만 "추가 정보 → 실행"',
         download: DOWNLOAD_WIN,
         inst1: '내려받은 설치 파일을 <b>실행</b>해요.',
@@ -65,7 +65,7 @@ const T = {
     faqTitle: '자주 묻는 질문',
     faq: [
       ['배터리를 많이 쓰나요?', '하루 종일 켜둬도 배터리가 눈에 띄게 줄지 않아요. 쉬는 동안에는 화면 구석만 그리고, 운동할 때만 화면 전체를 써요.'],
-      ['제 기록이 어디로 가나요?', '아무 데도 안 가요. 인터넷을 쓰지 않는 앱이라 언제 무엇을 했는지가 이 컴퓨터 안 파일 하나에만 쌓여요. 그 파일을 지우면 기록도 사라져요.'],
+      ['제 기록이 어디로 가나요?', '아무 데도 안 가요. 기록은 이 컴퓨터 안 파일 하나에만 쌓여요. 인터넷은 하루 한 번, 새 버전이 있는지 확인할 때만 GitHub에 접속하고 그때도 기록은 보내지 않아요. 파일을 지우면 기록도 사라져요.'],
       ['윈도우에서도 되나요?', '베타로 돼요. 위에서 Windows를 고르면 받을 수 있어요. 아직 실기기 검증을 막 시작한 단계라 문제가 있을 수 있어요.'],
       ['소리가 나나요?', '안 나요. 화면 구석에 카드만 조용히 떠요.'],
       ['20분이 너무 잦아요.', '설정에서 10분, 20분, 30분, 45분, 60분 중에 고를 수 있어요.'],
@@ -102,7 +102,7 @@ const T = {
     instTitle: 'Install',
     os: {
       mac: {
-        specs: 'macOS (Intel & Apple Silicon) · 3.9MB · never goes online · free',
+        specs: 'macOS (Intel & Apple Silicon) · 3.9MB · online only to check for updates · free',
         ctaHint: 'First launch: right-click → Open',
         download: DOWNLOAD_MAC,
         inst1: 'Drag the app into <b>Applications</b>.',
@@ -113,7 +113,7 @@ const T = {
           'Nothing is broken. The app is unsigned, so a plain double-click gets blocked. Right-click (or control-click) → Open → Open again. Once per new version.',
       },
       win: {
-        specs: 'Windows (beta) · 1.5MB · never goes online · free',
+        specs: 'Windows (beta) · 1.5MB · online only to check for updates · free',
         ctaHint: 'First launch: "More info" → Run anyway',
         download: DOWNLOAD_WIN,
         inst1: 'Run the downloaded installer.',
@@ -130,7 +130,7 @@ const T = {
     faqTitle: 'Questions people ask',
     faq: [
       ['Does it drain my battery?', 'Leave it on all day and you will not notice. It only draws a corner of the screen while idle, and uses the full screen during the 40 seconds.'],
-      ['Where does my data go?', 'Nowhere. The app never goes online, so what you did and when is appended to a single file on your computer. Delete that file and the history is gone.'],
+      ['Where does my data go?', 'Nowhere. What you did and when is appended to a single file on your computer. The app goes online once a day, only to check GitHub for a new version tag — your history is never sent. Delete that file and the history is gone.'],
       ['Is there a Windows version?', 'Yes, in beta. Pick Windows above to get it. Real-device testing just started, so there may be rough edges.'],
       ['Does it make a sound?', 'No. A small card just appears in the corner.'],
       ['Every 20 minutes is too often.', 'You can pick 10, 20, 30, 45 or 60 minutes in settings.'],
