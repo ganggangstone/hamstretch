@@ -11,8 +11,8 @@ import { PAL, CELL, IDLE, ACCESSORIES, BASES } from './src/sprites.js';
 const REPO = 'https://github.com/ganggangstone/hamstretch';
 // OS별로 받는 파일이 다르다. releases/latest는 목록 페이지라 한 번 더 눌러야 하는데,
 // 자산 파일 이름을 직접 걸면 버튼을 누르자마자 다운로드가 시작된다.
-const DOWNLOAD_MAC = `${REPO}/releases/download/v0.1.0/hamster_0.1.0_universal.dmg`;
-const DOWNLOAD_WIN = `${REPO}/releases/download/v0.1.0/hamster_0.1.0_x64-setup.exe`;
+const DOWNLOAD_MAC = `${REPO}/releases/download/v0.1.0/Hamstretch_0.1.0_universal.dmg`;
+const DOWNLOAD_WIN = `${REPO}/releases/download/v0.1.0/Hamstretch_0.1.0_x64-setup.exe`;
 
 const T = {
   ko: {
