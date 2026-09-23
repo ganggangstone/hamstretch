@@ -10,9 +10,10 @@
 
 ## 링크
 
-- 홈페이지: https://ganggangstone.github.io/hamstretch/
-- 다운로드(macOS, 인텔+Apple Silicon): https://github.com/ganggangstone/hamstretch/releases/download/v0.1.0/Hamstretch_0.1.0_universal.dmg
-- 다운로드(Windows, 베타): https://github.com/ganggangstone/hamstretch/releases/download/v0.1.0/Hamstretch_0.1.0_x64-setup.exe
+- 홈페이지(한국어): https://ganggangstone.github.io/hamstretch/
+- 홈페이지(English): https://ganggangstone.github.io/hamstretch/en/
+- 다운로드(macOS, 인텔+Apple Silicon): https://github.com/ganggangstone/hamstretch/releases/download/v0.1.1/Hamstretch_0.1.1_universal.dmg
+- 다운로드(Windows, 베타): https://github.com/ganggangstone/hamstretch/releases/download/v0.1.1/Hamstretch_0.1.1_x64-setup.exe
 - 만들면서 내린 결정 기록: https://github.com/ganggangstone/hamstretch/blob/main/DECISIONS.md
 
 ## 요약

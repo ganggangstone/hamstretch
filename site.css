@@ -35,13 +35,16 @@ nav {
   border: 1px solid var(--surface-border); border-radius: 999px;
   padding: 6px 16px; font-size: 14px; font-weight: 700; white-space: nowrap;
 }
-.langs button {
+/* 언어는 이제 실제로 갈라진 페이지라(루트/en/) 버튼이 아니라 링크다 —
+   검색엔진이 각각을 독립된 페이지로 색인하려면 진짜 <a href>여야 한다. */
+.langs a {
   border: 1px solid var(--surface-border); background: transparent; color: var(--text-dim);
-  border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 14px; cursor: pointer;
+  border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 14px;
+  text-decoration: none; display: inline-block;
 }
-/* 선택된 언어. 진한 주황(--accent)은 설치 버튼과 세기가 같아 시선을 나눠 가진다.
+/* 지금 보고 있는 언어. 진한 주황(--accent)은 설치 버튼과 세기가 같아 시선을 나눠 가진다.
    햄스터 몸 색을 쓰면 팔레트 안에 있으면서 한 단계 물러난다. */
-.langs button.on { background: var(--ham-body); border-color: var(--ham-body); color: var(--ham-outline); }
+.langs a[aria-current="page"] { background: var(--ham-body); border-color: var(--ham-body); color: var(--ham-outline); }
 
 main { max-width: 880px; margin: 0 auto; padding: 0 24px 80px; }
 

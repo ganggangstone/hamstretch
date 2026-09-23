@@ -6,13 +6,18 @@
 
 import { PAL, CELL, IDLE, ACCESSORIES, BASES } from './src/sprites.js';
 
+// /en/ 같은 하위 경로 페이지도 이 스크립트를 그대로 불러다 쓴다. 문서 URL
+// 기준 상대경로("screenshots/...")를 쓰면 그 페이지 밑에서 찾아버려 깨진다.
+// 이 스크립트 자신의 위치(site.js가 항상 있는 실제 사이트 루트) 기준으로 고정한다.
+const SITE_ROOT = new URL('.', import.meta.url).href;
+
 // 배포 주소가 정해지면 여기만 채우면 된다. 비어 있으면 그 링크는 화면에 안 나온다 —
 // 갈 곳 없는 링크를 눌러보게 두는 것보다 없는 편이 낫다.
 const REPO = 'https://github.com/ganggangstone/hamstretch';
 // OS별로 받는 파일이 다르다. releases/latest는 목록 페이지라 한 번 더 눌러야 하는데,
 // 자산 파일 이름을 직접 걸면 버튼을 누르자마자 다운로드가 시작된다.
-const DOWNLOAD_MAC = `${REPO}/releases/download/v0.1.0/Hamstretch_0.1.0_universal.dmg`;
-const DOWNLOAD_WIN = `${REPO}/releases/download/v0.1.0/Hamstretch_0.1.0_x64-setup.exe`;
+const DOWNLOAD_MAC = `${REPO}/releases/download/v0.1.1/Hamstretch_0.1.1_universal.dmg`;
+const DOWNLOAD_WIN = `${REPO}/releases/download/v0.1.1/Hamstretch_0.1.1_x64-setup.exe`;
 
 const T = {
   ko: {
@@ -79,7 +84,7 @@ const T = {
       ['지우고 싶어요.', '앱을 휴지통에 넣으면 끝이에요.'],
     ],
 
-    footNote: '눈이 쉬어야 할 때 알려주는 맥 앱',
+    footNote: '눈이 쉬어야 할 때 알려주는 맥/윈도우 앱',
     footFeedback: '문의·피드백',
   },
   en: {
@@ -144,7 +149,7 @@ const T = {
       ['How do I remove it?', 'Drag the app to the Trash. That is all.'],
     ],
 
-    footNote: 'A Mac app that tells you when to rest your eyes',
+    footNote: 'A macOS/Windows app that tells you when to rest your eyes',
     footFeedback: 'Contact',
   },
 };
@@ -220,7 +225,7 @@ function apply(lang, os) {
 
   // 받을 곳이 없는 동안 헤더 버튼은 데모로 보낸다.
   const top = document.getElementById('downloadTop');
-  top.href = t.download || 'demo/?play=1';
+  top.href = t.download || `${SITE_ROOT}demo/?play=1`;
 
   // FAQ는 목록이라 data-t로 못 넣는다. 접어두면 길이가 화면을 잡아먹지 않는다.
   document.getElementById('faq').innerHTML = t.faq
@@ -242,42 +247,36 @@ function apply(lang, os) {
   document.getElementById('shots').innerHTML = shots
     .map(
       ([file, caption]) =>
-        `<img src="screenshots/${lang}/${file}.png" alt="${caption}" />`,
+        `<img src="${SITE_ROOT}screenshots/${lang}/${file}.png" alt="${caption}" />`,
     )
     .join('');
 
-  for (const button of document.querySelectorAll('[data-lang]')) {
-    button.classList.toggle('on', button.dataset.lang === lang);
-  }
   for (const button of document.querySelectorAll('[data-os]')) {
     button.classList.toggle('on', button.dataset.os === os);
   }
-  localStorage.setItem('siteLang', lang);
   localStorage.setItem('siteOS', os);
 }
 
 drawHamster(document.getElementById('mark'), { gear: ['glasses'] });
 drawHamster(document.getElementById('hero'), { gear: ['glasses'], base: 'wheel' });
 
-for (const button of document.querySelectorAll('[data-lang]')) {
-  button.addEventListener('click', () => apply(button.dataset.lang, currentOS));
-}
 for (const button of document.querySelectorAll('[data-os]')) {
   button.addEventListener('click', () => apply(currentLang, button.dataset.os));
 }
 
-// ?lang=ko, ?os=win 으로 강제할 수 있다. 링크 하나로 "이 언어, 이 OS로 봐줘"가
-// 된다 — 윈도우판을 친구에게 테스트해달라고 부탁할 때 ?os=win을 붙여서 보내면 된다.
+// ?os=win 으로 강제할 수 있다 — 윈도우판을 친구에게 테스트해달라고 부탁할 때
+// 붙여서 보내면 된다.
 function detectOS() {
   return /Win/i.test(navigator.userAgent || '') ? 'win' : 'mac';
 }
 
-const forcedLang = new URLSearchParams(location.search).get('lang');
-const forcedOS = new URLSearchParams(location.search).get('os');
-const savedLang = localStorage.getItem('siteLang');
-const savedOS = localStorage.getItem('siteOS');
-const autoLang = (navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en';
+// 언어는 더 이상 여기서 고르지 않는다. 페이지 자체가 언어별로 갈려 있다
+// (루트 = 한국어, /en/ = 영어) — 검색엔진이 언어별로 따로 색인하려면 URL이
+// 실제로 갈라져 있어야 하고, ?lang= 같은 파라미터는 보통 같은 URL로
+// 합쳐져서 안 먹힌다. <html lang="..">이 그 페이지의 언어를 그대로 말해준다.
+const lang = document.documentElement.lang === 'en' ? 'en' : 'ko';
 
-const lang = T[forcedLang] ? forcedLang : T[savedLang] ? savedLang : autoLang;
+const forcedOS = new URLSearchParams(location.search).get('os');
+const savedOS = localStorage.getItem('siteOS');
 const os = ['mac', 'win'].includes(forcedOS) ? forcedOS : ['mac', 'win'].includes(savedOS) ? savedOS : detectOS();
 apply(lang, os);
