@@ -1,53 +1,59 @@
-<div align="center">
+<p align="center">
+  <a href="README.md"><img src="https://img.shields.io/badge/English-selected-2ea44f?style=for-the-badge" alt="English"></a>
+  <a href="README.ko.md"><img src="https://img.shields.io/badge/%ED%95%9C%EA%B5%AD%EC%96%B4-%EC%9D%BD%EA%B8%B0-555?style=for-the-badge" alt="한국어"></a>
+</p>
 
-<img src="screenshots/ko/card-01.png" width="320" alt="쳇바퀴 위의 픽셀 햄스터" />
+<p align="center">
+  <img src="screenshots/ko/card-01.png" width="320" alt="A pixel hamster on a wheel">
+</p>
 
-# 햄스터
-
-눈이 쉬어야 할 때 알려주는 맥/윈도우 메뉴바 앱.
-무시해도 되고, 대신 그 횟수를 기록합니다.
-
-4MB · 유휴 CPU 0.43% · 인터넷을 쓰지 않음 · 무료
-
-</div>
+<p align="center">A menu bar app that tells you when to rest your eyes.</p>
+<p align="center">You can ignore it. It just counts how many times you did.</p>
+<p align="center">3.9MB · 0.43% idle CPU · never goes online · free</p>
 
 ---
 
-## 왜 만들었나
+## Why
 
-20분마다 쉬라고 알려주는 앱은 이미 많은데, 대부분 화면을 강제로 잠급니다.
-바쁠 때 한 번 걸리면 그 자리에서 지워집니다.
+Most 20-minute reminder apps lock the screen. Get one at the wrong moment and it gets
+uninstalled on the spot.
 
-그래서 강제로 막지 않고, 대신 무시한 횟수를 기록하는 쪽으로 만들었습니다.
-미루기를 한 번에 되게 하고, 그 대신 얼마나 미뤘는지를 햄스터 볼과 주간 기록으로 보여줍니다.
+This one doesn't block anything. Skipping a break is always one click, and instead of
+stopping you, it counts how often you skipped — shown on the hamster's cheek and in a
+weekly log.
 
-## 한 세트는 40초
+## One break is 40 seconds
 
 | | |
 |---|---|
-| 20초 | 햄스터가 화면 가장자리를 두 바퀴 돕니다. 눈으로 따라가세요 |
-| 10초 | 창밖이나 먼 곳을 봅니다. 화면 안에서 눈을 굴려봐야 초점 거리는 그대로입니다 |
-| 10초 | 같이 기지개를 켭니다 |
+| 20s | The hamster runs two laps around the screen edge. Follow it with your eyes. |
+| 10s | Look out a window or at something far away. Moving your eyes inside the screen doesn't change focal distance. |
+| 10s | Stretch. |
 
-<img src="screenshots/ko/card-05.png" width="420" alt="화면 구석에 뜨는 알림 카드" />
-<img src="screenshots/ko/card-07.png" width="420" alt="기록 화면" />
+<p>
+  <img src="screenshots/en/card-05.png" width="420" alt="The notification card that appears in a corner">
+  <img src="screenshots/en/card-07.png" width="420" alt="The weekly log screen">
+</p>
 
-## 설치
+## Install
 
-[다운로드 페이지](https://ganggangstone.github.io/hamstretch/)에서 받습니다.
+Get it from the [download page](https://ganggangstone.github.io/hamstretch/).
 
-macOS는 앱을 응용 프로그램 폴더로 옮기고 우클릭 → 열기로 실행합니다.
-서명이 없어서 그냥 더블클릭하면 막히고, 새 버전을 받을 때마다 한 번씩 필요합니다.
-Windows(베타)는 설치 파일을 실행하면 되고, SmartScreen이 뜨면 "추가 정보 → 실행"을 누릅니다.
+On macOS, move the app to Applications and right-click → Open. It's unsigned, so a plain
+double-click gets blocked, and this is needed once per new version. On Windows (beta),
+run the installer; if SmartScreen appears, click "More info → Run anyway".
 
-## 수집하는 개인정보 없음
+## Collects nothing
 
-인터넷을 아예 쓰지 않습니다. 언제 무엇을 했는지만 이 컴퓨터 안의 파일 하나에 쌓이고,
-그 파일은 밖으로 나가지 않습니다. 활동 모니터로 직접 확인할 수 있습니다.
+The app never goes online. What you did and when is appended to a single file on this
+computer, and that file never leaves it. You can confirm this yourself in Activity
+Monitor.
 
-## 만들면서 내린 결정
+## Decisions made while building it
 
-[DECISIONS.md](DECISIONS.md)에 결정 23개를 대안·장단점과 함께 적었습니다.
-근거를 보고 뒤집은 결정 두 개(유휴 CPU, 주간 목표 기준)에는 별표를 달았습니다.
+[DECISIONS.md](DECISIONS.md) records 23 decisions with the alternatives considered.
+Two are starred — decisions reversed after measuring instead of guessing (idle CPU cost,
+what the weekly goal counts).
 
-이 저장소에는 앱 소스가 들어 있지 않습니다. 랜딩 페이지와 배포 파일, 결정 기록만 있습니다.
+This repository holds the landing page, release files, and the decision log — not the
+app's source.
