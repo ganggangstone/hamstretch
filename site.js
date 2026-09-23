@@ -16,8 +16,12 @@ const SITE_ROOT = new URL('.', import.meta.url).href;
 const REPO = 'https://github.com/ganggangstone/hamstretch';
 // OS별로 받는 파일이 다르다. releases/latest는 목록 페이지라 한 번 더 눌러야 하는데,
 // 자산 파일 이름을 직접 걸면 버튼을 누르자마자 다운로드가 시작된다.
-const DOWNLOAD_MAC = `${REPO}/releases/download/v0.1.1/Hamstretch_0.1.1_universal.dmg`;
-const DOWNLOAD_WIN = `${REPO}/releases/download/v0.1.1/Hamstretch_0.1.1_x64-setup.exe`;
+// 원티드 AI 챔피언십 2026 심사 기간(2026-09-21~10-17)에는 검증 안 된 설치
+// 파일(dmg/exe)을 직접 받게 하는 방식이 금지다. 이 기간에는 비워둔다 —
+// 비어 있으면 버튼이 자동으로 숨고 데모 안내로 바뀐다(아래 apply() 참고).
+// 10월 18일 이후 아래 두 줄을 되살릴 것.
+const DOWNLOAD_MAC = '';
+const DOWNLOAD_WIN = '';
 
 const T = {
   ko: {
