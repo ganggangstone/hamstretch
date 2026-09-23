@@ -1,0 +1,23 @@
+# 기지개햄 (Hamstretch)
+
+20분마다 눈 쉴 때를 알려주는 macOS/Windows 메뉴바 앱. 무료, 인터넷을 쓰지 않음, 4MB.
+
+## 무엇을 하는 앱인가
+
+일정 시간마다 화면 구석에 픽셀 햄스터가 나타나 40초짜리 눈 운동(따라보기 20초,
+먼 곳 보기 10초, 기지개 10초)을 안내한다. 강제로 화면을 잠그지 않고, 무시해도
+그 횟수만 기록한다. 사용자 데이터는 로컬 파일 하나에만 쌓이고 외부로 전송되지 않는다.
+
+## 링크
+
+- 홈페이지: https://ganggangstone.github.io/hamstretch/
+- 다운로드(macOS, 인텔+Apple Silicon): https://github.com/ganggangstone/hamstretch/releases/download/v0.1.0/hamster_0.1.0_universal.dmg
+- 다운로드(Windows, 베타): https://github.com/ganggangstone/hamstretch/releases/download/v0.1.0/hamster_0.1.0_x64-setup.exe
+- 만들면서 내린 결정 기록: https://github.com/ganggangstone/hamstretch/blob/main/DECISIONS.md
+
+## 요약
+
+- 가격: 무료
+- 플랫폼: macOS(Intel/Apple Silicon), Windows(베타)
+- 인터넷 접속: 안 함
+- 수집하는 개인정보: 없음
