@@ -4,22 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="google-site-verification" content="yGmYmrjmriGeLdfNYpnygEONXYzJY-v47kT8BOJidQM" />
-    <title>기지개햄, 눈이 쉬어야 할 때 알려주는 맥 앱</title>
-    <meta name="description" content="20분마다 쉬라고 알려주는 맥 메뉴바 앱. 무시해도 되고, 대신 그 횟수를 기록합니다. 4MB, 무료, 업데이트 확인 외엔 인터넷을 쓰지 않습니다." />
+    <title>기지개햄, 눈이 쉬어야 할 때 알려주는 맥/윈도우 앱</title>
+    <meta name="description" content="20분마다 쉬라고 알려주는 맥/윈도우 메뉴바 앱. 무시해도 되고, 대신 그 횟수를 기록합니다. 4MB, 무료, 업데이트 확인 외엔 인터넷을 쓰지 않습니다." />
     <link rel="canonical" href="https://ganggangstone.github.io/hamstretch/" />
-    <link rel="alternate" hreflang="ko" href="https://ganggangstone.github.io/hamstretch/?lang=ko" />
-    <link rel="alternate" hreflang="en" href="https://ganggangstone.github.io/hamstretch/?lang=en" />
+    <link rel="alternate" hreflang="ko" href="https://ganggangstone.github.io/hamstretch/" />
+    <link rel="alternate" hreflang="en" href="https://ganggangstone.github.io/hamstretch/en/" />
     <link rel="alternate" hreflang="x-default" href="https://ganggangstone.github.io/hamstretch/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="기지개햄" />
     <meta property="og:url" content="https://ganggangstone.github.io/hamstretch/" />
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:title" content="기지개햄, 눈이 쉬어야 할 때 알려주는 맥 앱" />
+    <meta property="og:title" content="기지개햄, 눈이 쉬어야 할 때 알려주는 맥/윈도우 앱" />
     <meta property="og:description" content="온종일 모니터 앞에 앉아 있는 나를 위해 만든 거북목과 눈 피로 방지 데스크톱 앱." />
     <meta property="og:image" content="https://ganggangstone.github.io/hamstretch/screenshots/ko/card-01.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="기지개햄, 눈이 쉬어야 할 때 알려주는 맥 앱" />
+    <meta name="twitter:title" content="기지개햄, 눈이 쉬어야 할 때 알려주는 맥/윈도우 앱" />
     <meta name="twitter:description" content="온종일 모니터 앞에 앉아 있는 나를 위해 만든 거북목과 눈 피로 방지 데스크톱 앱." />
     <meta name="twitter:image" content="https://ganggangstone.github.io/hamstretch/screenshots/ko/card-01.png" />
     <link rel="icon" href="src-tauri/icons/32x32.png" />
@@ -33,7 +33,7 @@
         "alternateName": "Hamstretch",
         "url": "https://ganggangstone.github.io/hamstretch/",
         "image": "https://ganggangstone.github.io/hamstretch/screenshots/ko/card-01.png",
-        "description": "20분마다 쉬라고 알려주는 맥 메뉴바 앱. 무시해도 되고, 대신 그 횟수를 기록합니다.",
+        "description": "20분마다 쉬라고 알려주는 맥/윈도우 메뉴바 앱. 무시해도 되고, 대신 그 횟수를 기록합니다.",
         "applicationCategory": "HealthApplication",
         "operatingSystem": "macOS, Windows",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -46,8 +46,8 @@
         <span class="brand"><canvas id="mark" width="44" height="44"></canvas> <b data-t="brand">기지개햄</b></span>
         <span class="navright">
           <span class="langs">
-            <button type="button" data-lang="ko">한국어</button>
-            <button type="button" data-lang="en">English</button>
+            <a href="./" aria-current="page">한국어</a>
+            <a href="en/">English</a>
           </span>
           <a class="cta-sm" id="downloadTop" href="#install" data-t="ctaTop">데모 보기</a>
         </span>
@@ -65,7 +65,7 @@
         </span>
         <p class="ctas">
           <a class="cta" id="demo" href="demo/?play=1" data-t="ctaDemo">데모 해보기</a>
-          <a class="cta" id="download" href="https://github.com/ganggangstone/hamstretch/releases/download/v0.1.0/Hamstretch_0.1.0_universal.dmg" data-t="cta">무료로 받기</a>
+          <a class="cta" id="download" href="https://github.com/ganggangstone/hamstretch/releases/download/v0.1.1/Hamstretch_0.1.1_universal.dmg" data-t="cta">무료로 받기</a>
         </p>
         <p class="specs" data-t="specs">macOS(인텔·Apple Silicon 모두) · 3.9MB · 업데이트 확인 외엔 인터넷 안 씀 · 무료</p>
         <p class="notice" id="notice" data-t="notOpen" hidden>아직 공개 전이에요. 먼저 데모로 만나보세요.</p>
@@ -117,7 +117,7 @@
 
     <footer>
       <p class="foot-brand"><b data-t="brand">기지개햄</b></p>
-      <p class="foot-note" data-t="footNote">눈이 쉬어야 할 때 알려주는 맥 앱</p>
+      <p class="foot-note" data-t="footNote">눈이 쉬어야 할 때 알려주는 맥/윈도우 앱</p>
       <p class="foot-links"><a id="feedback" href="#" data-t="footFeedback">문의·피드백</a></p>
       <p class="foot-copy">© <span id="year"></span> ganggangstone</p>
     </footer>

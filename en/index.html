@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hamstretch, a Mac/Windows app that reminds you to rest your eyes</title>
+    <meta name="description" content="A menu bar app that reminds you every 20 minutes. Ignore it if you want — it just counts how many times you did. 4MB, free, online only to check for updates." />
+    <link rel="canonical" href="https://ganggangstone.github.io/hamstretch/en/" />
+    <link rel="alternate" hreflang="ko" href="https://ganggangstone.github.io/hamstretch/" />
+    <link rel="alternate" hreflang="en" href="https://ganggangstone.github.io/hamstretch/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://ganggangstone.github.io/hamstretch/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hamstretch" />
+    <meta property="og:url" content="https://ganggangstone.github.io/hamstretch/en/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta property="og:title" content="Hamstretch, a Mac/Windows app that reminds you to rest your eyes" />
+    <meta property="og:description" content="Made for someone who sits in front of a monitor all day." />
+    <meta property="og:image" content="https://ganggangstone.github.io/hamstretch/screenshots/en/card-04.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hamstretch, a Mac/Windows app that reminds you to rest your eyes" />
+    <meta name="twitter:description" content="Made for someone who sits in front of a monitor all day." />
+    <meta name="twitter:image" content="https://ganggangstone.github.io/hamstretch/screenshots/en/card-04.png" />
+    <link rel="icon" href="../src-tauri/icons/32x32.png" />
+    <link rel="stylesheet" href="../src/theme.css" />
+    <link rel="stylesheet" href="../site.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Hamstretch",
+        "alternateName": "기지개햄",
+        "url": "https://ganggangstone.github.io/hamstretch/en/",
+        "image": "https://ganggangstone.github.io/hamstretch/screenshots/en/card-04.png",
+        "description": "A menu bar app that reminds you every 20 minutes. Ignore it if you want — it just counts how many times you did.",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "macOS, Windows",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <span class="brand"><canvas id="mark" width="44" height="44"></canvas> <b data-t="brand">Hamstretch</b></span>
+        <span class="navright">
+          <span class="langs">
+            <a href="../">한국어</a>
+            <a href="./" aria-current="page">English</a>
+          </span>
+          <a class="cta-sm" id="downloadTop" href="#install" data-t="ctaTop">Try the demo</a>
+        </span>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <canvas id="hero" width="200" height="320"></canvas>
+        <h1 data-t="title">Follow the hamster,<br />rest your eyes and stretch</h1>
+        <p class="lead" data-t="lead">Made for someone who sits in front of a monitor all day.</p>
+        <span class="oses">
+          <button type="button" data-os="mac">macOS</button>
+          <button type="button" data-os="win">Windows <span class="beta-badge" data-t="betaBadge">Beta</span></button>
+        </span>
+        <p class="ctas">
+          <a class="cta" id="demo" href="../demo/?play=1" data-t="ctaDemo">Try the demo</a>
+          <a class="cta" id="download" href="https://github.com/ganggangstone/hamstretch/releases/download/v0.1.1/Hamstretch_0.1.1_universal.dmg" data-t="cta">Get it free</a>
+        </p>
+        <p class="specs" data-t="specs">macOS (Intel &amp; Apple Silicon) · 3.9MB · online only to check for updates · free</p>
+        <p class="notice" id="notice" data-t="notOpen" hidden>Not out yet. Try the demo in the meantime.</p>
+        <p class="hint" data-t="ctaHint">First launch: right-click → Open</p>
+        <p class="beta-note" id="betaNote" data-t="betaNote" hidden></p>
+      </section>
+
+      <!-- The real app running. Not a mockup. -->
+      <section class="preview">
+        <iframe src="../demo/?embed=1" title="Hamstretch preview" scrolling="no" loading="lazy"></iframe>
+        <p class="preview-note" data-t="previewNote">This is the real app. Press the button above to play with it.</p>
+      </section>
+
+      <section class="shots"><div id="shots"></div></section>
+
+      <section id="install" class="install">
+        <h2 data-t="instTitle">Install</h2>
+        <ol>
+          <li data-t="inst1">Drag the app into <b>Applications</b>.</li>
+          <li data-t="inst2"><b>Right-click → Open</b> the app.</li>
+          <li data-t="inst3">A hamster appears in your menu bar.</li>
+        </ol>
+        <details class="warn">
+          <summary data-t="warnTitle">Does macOS say the developer cannot be verified?</summary>
+          <p data-t="warnBody">Nothing is broken. The app is unsigned, so a plain double-click gets blocked. Right-click (or control-click) → Open → Open again. Once per new version.</p>
+        </details>
+      </section>
+
+      <section class="faq">
+        <h2 data-t="faqTitle">Questions people ask</h2>
+        <div id="faq">
+          <details><summary>Does it drain my battery?</summary><p>Leave it on all day and you will not notice. It only draws a corner of the screen while idle, and uses the full screen during the 40 seconds.</p></details>
+          <details><summary>Where does my data go?</summary><p>Nowhere. What you did and when is appended to a single file on your computer. The app goes online once a day, only to check GitHub for a new version tag — your history is never sent. Delete that file and the history is gone.</p></details>
+          <details><summary>Is there a Windows version?</summary><p>Yes, in beta. Pick Windows above to get it. Real-device testing just started, so there may be rough edges.</p></details>
+          <details><summary>Does it make a sound?</summary><p>No. A small card just appears in the corner.</p></details>
+          <details><summary>Every 20 minutes is too often.</summary><p>You can pick 10, 20, 30, 45 or 60 minutes in settings.</p></details>
+          <details><summary>Can I move the hamster?</summary><p>Choose "Move the hamster" from the menu bar and drag it anywhere. It stays there after a restart.</p></details>
+          <details><summary>Can I hide the hamster?</summary><p>Turn it off in settings and it stays hidden until the next break. You need something to follow with your eyes.</p></details>
+          <details><summary>I use more than one display.</summary><p>It follows whichever screen your cursor is on. You can turn that off in settings.</p></details>
+          <details><summary>Which languages does it speak?</summary><p>English and Korean. Switch in settings.</p></details>
+          <details><summary>Is there a dark mode?</summary><p>It follows your system, and you can pin it to light or dark.</p></details>
+          <details><summary>What if I step away?</summary><p>If you have not touched anything for three minutes, it skips the reminder. You will not come back to a pile of old alerts.</p></details>
+          <details><summary>Does it cost anything?</summary><p>It is free.</p></details>
+          <details><summary>How do I remove it?</summary><p>Drag the app to the Trash. That is all.</p></details>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="foot-brand"><b data-t="brand">Hamstretch</b></p>
+      <p class="foot-note" data-t="footNote">A macOS/Windows app that tells you when to rest your eyes</p>
+      <p class="foot-links"><a id="feedback" href="#" data-t="footFeedback">Contact</a></p>
+      <p class="foot-copy">© <span id="year"></span> ganggangstone</p>
+    </footer>
+
+    <script type="module" src="../site.js"></script>
+  </body>
+</html>
