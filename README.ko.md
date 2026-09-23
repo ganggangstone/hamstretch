@@ -42,6 +42,14 @@ macOS는 앱을 응용 프로그램 폴더로 옮기고 우클릭 → 열기로 
 없어서 더블클릭은 막히고, 새 버전마다 한 번씩 필요합니다. Windows(베타)는
 설치 파일을 실행하고, SmartScreen이 뜨면 "추가 정보 → 실행"을 누릅니다.
 
+Homebrew를 쓴다면:
+
+```bash
+brew install --cask ganggangstone/tap/hamstretch
+```
+
+`brew upgrade`로 새 버전을 받으면 우클릭 절차가 없습니다.
+
 ## 수집하는 개인정보 없음
 
 인터넷은 하루 한 번, 새 버전이 있는지 GitHub에서 확인할 때만 씁니다 — 그때도

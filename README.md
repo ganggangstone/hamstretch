@@ -43,6 +43,14 @@ On macOS, move the app to Applications and right-click → Open. It's unsigned, 
 double-click gets blocked, and this is needed once per new version. On Windows (beta),
 run the installer; if SmartScreen appears, click "More info → Run anyway".
 
+Or with Homebrew:
+
+```bash
+brew install --cask ganggangstone/tap/hamstretch
+```
+
+`brew upgrade` handles new versions — no right-click step.
+
 ## Collects nothing
 
 The app goes online once a day, only to check GitHub for a new version tag — nothing
