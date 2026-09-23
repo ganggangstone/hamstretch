@@ -9,7 +9,7 @@
 
 <p align="center">A menu bar app that tells you when to rest your eyes.</p>
 <p align="center">You can ignore it. It just counts how many times you did.</p>
-<p align="center">3.9MB · 0.43% idle CPU · never goes online · free</p>
+<p align="center">3.9MB · 0.43% idle CPU · online only to check for updates · free</p>
 
 ---
 
@@ -45,8 +45,9 @@ run the installer; if SmartScreen appears, click "More info → Run anyway".
 
 ## Collects nothing
 
-The app never goes online. What you did and when is appended to a single file on this
-computer, and that file never leaves it. You can confirm this yourself in Activity
+The app goes online once a day, only to check GitHub for a new version tag — nothing
+about your usage is ever sent. What you did and when is appended to a single file on
+this computer, and that file never leaves it. You can confirm this yourself in Activity
 Monitor.
 
 ## Decisions made while building it
