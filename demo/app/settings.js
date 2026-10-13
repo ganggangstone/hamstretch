@@ -207,7 +207,7 @@ fbSend.addEventListener('click', async () => {
   }
 });
 
-// 아직 보낼 곳이 없으면 왜 안 되는지 미리 알려준다 — 눌러보고 나서 알게 하지 않는다.
+// 아직 보낼 곳이 없으면 왜 안 되는지 미리 알려준다. 눌러보고 나서 알게 하지 않는다.
 if (!FEEDBACK_URL) {
   fbSend.disabled = true;
   fbStatus.textContent = t('feedbackOff');

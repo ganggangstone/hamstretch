@@ -99,8 +99,8 @@ iframe { border: 0; background: transparent; }
 
 footer { margin-top: 36px; display: flex; gap: 16px; justify-content: center; font-size: 14px; }
 
-/* 좁은 화면. 폭이 아니라 화면에 들어오는지를 기준으로 줄인다 —
-   알림 카드와 안내 버튼은 잘리면 데모가 아니라 고장으로 보인다. */
+/* 좁은 화면. 폭이 아니라 화면에 들어오는지를 기준으로 줄인다.
+알림 카드와 안내 버튼은 잘리면 데모가 아니라 고장으로 보인다. */
 @media (max-width: 720px) {
   body { padding: 20px 14px 40px; }
   header h1 { font-size: 21px; }
@@ -168,8 +168,8 @@ body.shooting-sheet .sheet {
 body.shooting-sheet .sheet-head { display: none; }
 body.shooting-sheet #dash { height: 760px; }
 
-/* 시연 모드. 설명을 읽는 화면과 보는 화면을 나눈다 —
-   화면이 작으면 햄스터가 무엇을 하는지 안 보인다. */
+/* 시연 모드. 설명을 읽는 화면과 보는 화면을 나눈다.
+화면이 작으면 햄스터가 무엇을 하는지 안 보인다. */
 body.stage {
   padding: 0; height: 100vh; height: 100dvh; overflow: hidden;
   display: flex; flex-direction: column;
@@ -207,3 +207,7 @@ body.embed .desk { max-width: none; border: 0; border-radius: 0; }
   text-decoration: none; border: 1px solid var(--line); border-radius: 12px;
   padding: 11px 18px; color: var(--text-dim); font-size: 15px;
 }
+
+/* Embedded demo fills its frame, including on narrow screens. */
+body.embed .desk { width:100%; height:100vh; height:100dvh; display:flex; flex-direction:column; margin:0; }
+body.embed .screen { flex:1; min-height:0; aspect-ratio:auto; }

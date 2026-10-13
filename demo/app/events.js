@@ -9,7 +9,7 @@ const { invoke } = window.__TAURI__.core;
 export const DONE = 'done';
 export const SNOOZE = 'snooze';
 export const OFF = 'off';
-// 알림을 띄웠는데 아무 버튼도 누르지 않은 경우. 미루기와 구분해서 남긴다 —
+// 알림을 띄웠는데 아무 버튼도 누르지 않은 경우. 미루기와 구분해서 남긴다.
 // 적극적으로 미룬 것과 반응조차 없는 것은 사용자 상태가 전혀 다르고,
 // 후자가 쌓이면 알림 방식 자체가 안 맞는다는 신호다.
 export const IGNORED = 'ignored';
@@ -95,7 +95,7 @@ export async function thisWeekCounts() {
   return counts;
 }
 
-/// 응답률(0~1). 분모가 0이면 null — "아직 판단할 수 없음"과 0%는 다르다.
+/// 응답률(0~1). 분모가 0이면 null. "아직 판단할 수 없음"과 0%는 다르다.
 export function responseRate(counts) {
   const total = PROMPTED.reduce((sum, kind) => sum + (counts[kind] ?? 0), 0);
   return total === 0 ? null : counts.done / total;

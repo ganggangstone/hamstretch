@@ -16,7 +16,7 @@ import { log, todayCount, isOffToday, DONE, SNOOZE, OFF, IGNORED } from './event
 const { invoke } = window.__TAURI__.core;
 const { listen, emit } = window.__TAURI__.event;
 
-const SCALE = 4; // 정수배만 — 픽셀아트는 보간하면 뭉개진다
+const SCALE = 4; // 정수배만. 픽셀아트는 보간하면 뭉개진다
 const SIZE = CELL * SCALE;
 
 const canvas = document.getElementById('stage');
@@ -42,7 +42,7 @@ resize();
 window.addEventListener('resize', resize);
 
 // 오버레이 한 장만 그린다(쳇바퀴처럼 몸통 뒤에 깔리는 것).
-// 배율을 따로 받는다 — 쳇바퀴는 햄스터보다 커야 뒤에서 보인다.
+// 배율을 따로 받는다. 쳇바퀴는 햄스터보다 커야 뒤에서 보인다.
 function drawLayer(layer, x, y, scale = SCALE) {
   ctx.save();
   ctx.translate(Math.round(x), Math.round(y));
@@ -90,7 +90,7 @@ function showBubble(text, x, y) {
   bubble.classList.add('on');
   const bw = bubble.offsetWidth;
   const bh = bubble.offsetHeight;
-  // 화면 위쪽에 있을 때는 말풍선을 아래로 내린다 — 잘리지 않도록.
+  // 화면 위쪽에 있을 때는 말풍선을 아래로 내린다. 잘리지 않도록.
   const above = y - bh - 14;
   const top = above < 8 ? y + SIZE + 14 : above;
   bubble.classList.toggle('below', above < 8);
@@ -238,7 +238,7 @@ function render(now) {
     }
     const x = W / 2 - SIZE / 2;
     const y = H / 2 - SIZE / 2;
-    // 팔을 올렸다 내렸다 반복 — 사용자가 따라 하기 쉬운 속도로.
+    // 팔을 올렸다 내렸다 반복. 사용자가 따라 하기 쉬운 속도로.
     const up = tick % 16 < 8;
     drawSprite(IDLE, up ? [ARMS_UP, ...gear] : gear, x, y, false);
     showBubble(t('stretch', secondsLeft(elapsed, STRETCH_MS)), x, y);
@@ -306,14 +306,14 @@ function applyPetVisibility() {
 
 // --- 알림 흐름 -----------------------------------------------------------
 // 주기가 되면 곧장 운동을 시키지 않고 먼저 묻는다. 무시할 자유를 주되 그 횟수를 남기는 게
-// 이 앱의 성격이다. 미루기가 3번 쌓이면 앱이 먼저 물러난다 — 사용자가 앱을 이기게 두되
+// 이 앱의 성격이다. 미루기가 3번 쌓이면 앱이 먼저 물러난다. 사용자가 앱을 이기게 두되
 // 기록에는 남긴다.
 const SNOOZE_MS = 15 * 60 * 1000;
 const SNOOZE_LIMIT = 3;
 
 // 알림을 띄우고 이만큼 기다려도 아무 버튼도 안 누르면 무시로 본다.
 // 5분: 회의 중이거나 잠깐 자리를 비운 경우까지 살린다.
-// 2분으로 잡았다가 늘렸다 — 짧으면 '자리에 없었을 뿐'인 사람이 무시로 기록된다.
+// 2분으로 잡았다가 늘렸다. 짧으면 '자리에 없었을 뿐'인 사람이 무시로 기록된다.
 const IGNORE_MS = 5 * 60 * 1000;
 
 // 연달아 이만큼 무시되면 알림을 멈춘다. 반응이 없는데 계속 띄우는 건
@@ -338,7 +338,7 @@ async function openPrompt() {
   if (await isOffToday()) return; // 오늘은 그만하기로 한 날
 
   // 자리에 없으면 묻지 않는다. 어차피 화면을 안 보고 있으니 눈도 쉬는 중이다.
-  // 다음 주기에 다시 확인한다 — 돌아오면 그때부터 새로 센다.
+  // 다음 주기에 다시 확인한다. 돌아오면 그때부터 새로 센다.
   if (await isAway()) {
     scheduleNext();
     return;

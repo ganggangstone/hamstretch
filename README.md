@@ -7,27 +7,33 @@
   <img src="screenshots/ko/card-01.png" width="320" alt="A pixel hamster on a wheel">
 </p>
 
-<p align="center">A menu bar app that tells you when to rest your eyes.</p>
-<p align="center">You can ignore it. It just counts how many times you did.</p>
+<p align="center">A menu bar app with reminders for eye breaks and stretching.</p>
+<p align="center">Follow a hamster around the screen and stretch with it. Snooze when you’re busy.</p>
 <p align="center">3.9MB · 0.43% idle CPU · online only to check for updates · free</p>
 
 ---
 
-## Why
+When you spend hours at a computer, it is easy to forget to rest your eyes or move.
+If you are looking for eye care reminders, desk stretches when you notice tech neck,
+or regular breaks from sitting for your back health, Hamstretch can remind you to pause.
 
-Most 20-minute reminder apps lock the screen. Get one at the wrong moment and it gets
-uninstalled on the spot.
+Every 20 minutes, a hamster invites you to take a break: follow it with your eyes,
+look away at something distant, then stretch together.
 
-This one doesn't block anything. Skipping a break is always one click, and instead of
-stopping you, it counts how often you skipped — shown on the hamster's cheek and in a
-weekly log.
+## How it works
 
-## One break is 40 seconds
+A break reminder appears in a corner of your screen every 20 minutes. You can start
+a break or snooze for 15 minutes.
+
+During a break, the hamster runs around the screen edge and stretches. Its cheek
+pouches and a weekly log show how often you snoozed.
+
+## A 40-second break
 
 | | |
 |---|---|
 | 20s | The hamster runs two laps around the screen edge. Follow it with your eyes. |
-| 10s | Look out a window or at something far away. Moving your eyes inside the screen doesn't change focal distance. |
+| 10s | Look away from the screen, out a window or at something far away. |
 | 10s | Stretch. |
 
 <p>
@@ -49,20 +55,18 @@ Or with Homebrew:
 brew install --cask ganggangstone/tap/hamstretch
 ```
 
-`brew upgrade` handles new versions — no right-click step.
+Use `brew upgrade` for new versions without the right-click step.
 
-## Collects nothing
+## Usage records
 
-The app goes online once a day, only to check GitHub for a new version tag — nothing
-about your usage is ever sent. What you did and when is appended to a single file on
-this computer, and that file never leaves it. You can confirm this yourself in Activity
-Monitor.
+Breaks and snoozes are recorded locally on your computer and are not sent to a server.
+The app connects to GitHub once a day to check for a new version.
 
 ## Decisions made while building it
 
-[DECISIONS.md](DECISIONS.md) records 23 decisions with the alternatives considered.
-Two are starred — decisions reversed after measuring instead of guessing (idle CPU cost,
-what the weekly goal counts).
+[DECISIONS.md](DECISIONS.md) explains implementation choices and the alternatives
+considered. Starred entries mark changes to the idle CPU threshold and weekly goal
+based on measurements.
 
-This repository holds the landing page, release files, and the decision log — not the
-app's source.
+This repository contains the landing page, release files, and decision log.
+The app source is maintained separately.

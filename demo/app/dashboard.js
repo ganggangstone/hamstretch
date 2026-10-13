@@ -1,6 +1,6 @@
 // 대시보드. 지금까지 쌓인 기록을 보여준다.
 //
-// 저장된 숫자는 없다 — events.jsonl의 원본을 매번 세서 그린다.
+// 저장된 숫자는 없다. events.jsonl의 원본을 매번 세서 그린다.
 // 기록이 아주 많아져도 이 규모(하루 수십 줄)에서는 문제가 되지 않는다.
 
 import { PAL, CELL, IDLE, puffLayer } from './sprites.js';
@@ -55,7 +55,7 @@ function drawChart(byDay) {
 
     const col = document.createElement('div');
     col.className = 'col';
-    // 0회인 날도 얇은 선으로 남겨 둔다 — 칸이 비면 그날이 없는 것처럼 보인다.
+    // 0회인 날도 얇은 선으로 남겨 둔다. 칸이 비면 그날이 없는 것처럼 보인다.
     col.style.height = `${Math.round((count / max) * 100)}%`;
 
     const label = document.createElement('span');
@@ -96,7 +96,7 @@ async function refresh() {
 
   const percent = rate === null ? 0 : Math.round(rate * 100);
   el('weekCount').textContent =
-    rate === null ? '—' : `${week.done} / ${total} · ${percent}%`;
+    rate === null ? '-' : `${week.done} / ${total} · ${percent}%`;
   el('bar').style.width = `${Math.min(percent, 100)}%`;
   el('bar').classList.toggle('met', enough && percent >= goal);
 

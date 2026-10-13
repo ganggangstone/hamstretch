@@ -1,5 +1,5 @@
 // 테마 선택값을 읽고 쓰고 화면에 반영한다.
-// 색 자체는 theme.css에만 있다 — 여기서는 html의 data-theme만 갈아끼운다.
+// 색 자체는 theme.css에만 있다. 여기서는 html의 data-theme만 갈아끼운다.
 
 export const THEMES = ['system', 'light', 'dark'];
 const KEY = 'theme';

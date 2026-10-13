@@ -18,7 +18,7 @@ function broadcast(event, payload) {
   for (const frame of frames()) send(frame, { type: 'event', event, payload });
 }
 
-// 펫 창 크기. 운동할 때만 화면 전체를 쓴다 — 앱에서 상시 전체 화면이
+// 펫 창 크기. 운동할 때만 화면 전체를 쓴다. 앱에서 상시 전체 화면이
 // 유휴 CPU를 2.5배로 올렸던 것과 같은 이유로 구조를 그대로 뒀다.
 function setStage(full) {
   pet.classList.toggle('full', full);
@@ -144,7 +144,7 @@ function step(name) {
 
 // --- 꾸미기 ------------------------------------------------------------
 // 앱에서 소품은 설정의 worn 목록 하나로 정해진다. 데모도 같은 목록을 고치고
-// settings-changed를 쏘기만 하면 된다 — 그리는 일은 앱 코드가 그대로 한다.
+// settings-changed를 쏘기만 하면 된다. 그리는 일은 앱 코드가 그대로 한다.
 const WORN = 'worn';
 
 function wornList() {
@@ -250,7 +250,7 @@ document.getElementById('reset').addEventListener('click', () => {
 // --- 자동 시연 ----------------------------------------------------------
 // 단계마다 버튼을 눌러야 끝까지 가는 구조는 대부분 첫 버튼에서 멈춘다.
 // 그래서 들어오면 알아서 한 바퀴 돈다. 사람이 무엇이든 누르는 순간 멈추고
-// 그때부터는 직접 조작하게 둔다 — 자동과 수동이 겹치면 둘 다 이상해진다.
+// 그때부터는 직접 조작하게 둔다. 자동과 수동이 겹치면 둘 다 이상해진다.
 // 스토어·제출용 스크린샷을 찍을 때는 자동 시연을 끄고 원하는 장면에서 멈춰야 한다.
 // ?shot=... 으로 그 장면을 지정한다. 손으로 눌러가며 찍으면 매번 다른 그림이 나온다.
 const params = new URLSearchParams(location.search);
@@ -293,7 +293,7 @@ function enterStage() {
   setTimeout(() => document.addEventListener('click', stopAuto), 0);
 }
 
-if (!SHOT && !params.get('embed')) enterStage();
+if (!SHOT) enterStage();
 
 document.getElementById('closeDash').addEventListener('click', () => {
   document.getElementById('sheet').hidden = true;
